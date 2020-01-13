@@ -23,7 +23,7 @@ The microcontroller ATmega328P contained on the Arduino Nano V3 contains three h
 But since the signal we want to generate contains a pause at the end of each rotation of the wheel we have to modify the signal PWM singnal in some way.
 We are using an interrupt to change the signal values 0/1 which is triggered by a hardware timer at the approriate frequency.
  
-Since timer 1 is a 16-bit timer which is counting at 16 Mhz (with prescaler set to 1) it takes 4096 us (4096 microseconds = (1/16 MHz)*2**16) to trigger an overflow.
+Since timer 1 is a 16-bit timer which is counting at 16 Mhz (with prescaler set to 1) it takes 4096 us (4096 microseconds = (1/16 MHz)*2^16) to trigger an overflow.
 You can define a compare register to trigger an interrupt if the counter has reached a specific value, i.e. you can trigger at any interval between 1/16 MHz and 4096 us.
 
 The calculation and setting of the output pin which is done in an interrupt service routine needs some amount of cpu cylcles.
@@ -56,13 +56,13 @@ If you have a two signal osciloscpe with an appropriate bandwidth, you can measu
 
 Todo: measure time, attach picture, measure interupt time, calculate maximum frequency with double interrupt time.
 
-Possible Optimizations:
+## Possible Optimizations:
 - FastWrite
 
-Setup:
+## Setup:
 -
 
-Structure:
+## Structure:
 v1_measurement - contains arduino code and osciloscope output
 v1_maximum
    
@@ -70,5 +70,9 @@ v1_maximum
 
 The used arduino clone "Nano V3.0 CH340" is available at [2].
 
+
+## References:
+
 [1] https://www.heise.de/developer/artikel/Timer-Counter-und-Interrupts-3273309.html (german)
+
 [2] https://www.az-delivery.de/products/nano-v3-0-pro (german)
