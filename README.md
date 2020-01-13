@@ -26,7 +26,7 @@ We are using an interrupt to change the signal values 0/1 which is triggered by 
 Since timer 1 is a 16-bit timer which is counting at 16 Mhz (with prescaler set to 1) it takes 4096 us (4096 microseconds = (1/16 MHz)*2^16) to trigger an overflow.
 You can define a compare register to trigger an interrupt if the counter has reached a specific value, i.e. you can trigger at any interval between 1/16 MHz and 4096 us.
 
-Since the calculation and setting of the output pin which is done in an interrupt service routine needs some amount of cpu cylcles the frquency of the interrupts can no be close to 16 MHz.
+Since the calculation and setting of the output pin which is done in an interrupt service routine needs some amount of cpu cylcles the frequency of the interrupts can no be close to 16 MHz.
 
 The calculation of the signal can be done using the following pseudo code using a global volatile byte typed variable count:
 
@@ -62,6 +62,8 @@ If you are using a nano clone with CH340 chip you have to install the driver (se
 
 ## Structure:
 ```
+README.md - readme (english)
+LIESMICH.md - readme (german)
 v1_1000_rpm - yields ~ 1000 rpm
 v1_maximum - proof of concept that 20000 rpm can be reached
 v1_measurement - was used to determine minimum value for compare interrupt
