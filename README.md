@@ -26,7 +26,7 @@ We are using an interrupt to change the signal values 0/1 which is triggered by 
 Since timer 1 is a 16-bit timer which is counting at 16 Mhz (with prescaler set to 1) it takes 4096 us (4096 microseconds = (1/16 MHz)*2^16) to trigger an overflow.
 You can define a compare register to trigger an interrupt if the counter has reached a specific value, i.e. you can trigger at any interval between 1/16 MHz and 4096 us.
 
-Since the calculation and setting of the output pin which is done in an interrupt service routine needs some amount of cpu cylcles the frequency of the interrupts can no be close to 16 MHz.
+Since the calculation and setting of the output pin which is done in an interrupt service routine needs some amount of cpu cylcles the frequency of the interrupts can not be close to 16 MHz.
 
 The calculation of the signal can be done using the following pseudo code using a global volatile byte typed variable count:
 
@@ -50,15 +50,15 @@ count = count % 128
 
 Now the question remains what is the maximum wheel frequency we can achieve, i.e. how much time or cpu cycles does the interrupt service routine use.
 
-If you have a two signal osciloscope with an appropriate bandwidth, you can measure this by setting a different output pin to 1 at the beginning and 0 at the end of the routine.
+If you have a two signal oscilloscope with an appropriate bandwidth, you can measure this by setting a different output pin to 1 at the beginning and 0 at the end of the routine.
 
-We messured that > 160 cpu cycles are necessary. Defining 320 as the minimum for the compare register yields wheel frequencies > 20000 rpm.
+We measured that > 160 cpu cycles are necessary. Defining 320 as the minimum for the compare register yields wheel frequencies > 20000 rpm.
 
 ## Possible improvements
 - FastWrite
 
 ## Setup:
-If you are using a nano clone with CH340 chip you have to install the driver (see [3]) and use "ATmega328P (Old Bootloader)" as processor within ther arduino IDE.
+If you are using a nano clone with CH340 chip you have to install the driver (see [3]) and use "ATmega328P (Old Bootloader)" as processor within the arduino IDE.
 
 ## Structure:
 ```
