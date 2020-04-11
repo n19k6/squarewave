@@ -3,6 +3,8 @@
 #define D10 10 // used to output signal
 #define D09 9 // used to output signal
 
+// millis and so on might not work when using timers
+
 //https://www.heise.de/developer/artikel/ATtiny-Winzlinge-ganz-gross-3329007.html
 //http://ww1.microchip.com/downloads/en/Appnotes/Atmel-2505-Setup-and-Use-of-AVR-Timers_ApplicationNote_AVR130.pdf
 //https://www.exp-tech.de/blog/arduino-tutorial-timer
