@@ -12,3 +12,5 @@ drei digitale signale
  
  - zündreferenzsignal, phasen verschiebung bzgl kurbelwelle
  - potis 10kOhm
+
+# 1 umdrehung pro sekunde, nach strom, 100 umdrehung
