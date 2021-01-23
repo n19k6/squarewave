@@ -1,0 +1,82 @@
+/*
+ * arduino nano v3 + 3 potentiometer
+ * schliesse die drei potentiometer so an A0, A1, A2, +5V, GND
+ * auf der einen seite des nano an das 0-5V an A0, A1, A2 abhaengig
+ * von der stellung des potis herauskommen
+ * 
+ *  nullstellung, 50%, 100%
+ *                \
+ *     O           O           O
+ *     |    ,                   \
+ * 
+ *  in der nullstellung sollte der wert 1 auf der konsole ausgegeben werden
+ *  in der 100%-stellung sollte der wert 1023 auf der konsole ausgegeben werden
+ */
+
+
+/*
+22:21:34.004 -> [1023, 1023, 1023]
+22:21:37.494 -> [815, 1023, 1023]
+22:21:38.014 -> [564, 1023, 1023]
+22:21:38.524 -> [401, 1023, 1023]
+*/
+
+
+//int analog_a = 2; // entspricht PIN A2
+//int analog_b = 1; // entspricht PIN A1
+//int analog_c = 0; // entspricht PIN A0
+int val_a = 0;
+int val_b = 0;
+int val_c = 0;
+int last_a = 0;
+int last_b = 0;
+int last_c = 0;
+int register_a = 0;
+int register_b = 0;
+int register_c = 0;
+
+const boolean invert = true; // implement as macro
+
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  last_a = val_a;
+  last_b = val_b;
+  last_c = val_c;
+  val_a = analogRead(2);
+  val_b = analogRead(1);
+  val_c = analogRead(0);
+
+  if (invert) {
+    val_a = map(val_a,0,1023,1023,0);
+    val_b = map(val_b,0,1023,1023,0);
+    val_c = map(val_c,0,1023,1023,0);
+  }
+
+  /*
+  if (stabilize) {
+    if (abs(val_a-register_a) > 1) {
+      register_a = val_a;
+    }
+    if (abs(val_b-register_b) > 1) {
+      register_b = val_b;
+    }
+    if (abs(val_c-register_c) > 1) {
+      register_c = val_c;
+    }  
+  }*/
+
+  if (last_a != val_a || last_b != val_b || last_c != val_c) {
+    Serial.print("[");
+    Serial.print(val_a);
+    Serial.print(", ");
+    Serial.print(val_b);
+    Serial.print(", ");
+    Serial.print(val_c);
+    Serial.print("]");
+    Serial.println();
+  }
+  delay(500);
+}
