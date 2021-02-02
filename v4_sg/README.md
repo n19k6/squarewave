@@ -21,3 +21,10 @@ drei digitale signale
  - d) steuerung der umdrehungen der kurbelwelle via poti 1. 6000 Umdrehungen können wegen geringem CPU takt von 8 MHz wahrscheinlich nicht erreicht werden
  
  
+neues signal für lambda sonde:
+0.1Hz-1Hz-10Hz
+duty cycle 0%-100%, default 10%??
+duty cycle<5% = always low
+duty cycle>95& = always high
+
+poti 1: kurbelwelle, poti 2: lambda sonde frequenz, poti 3: lambda sonde duty cycle
