@@ -23,7 +23,7 @@ drei digitale signale
  
 neues signal für lambda sonde:
 0.1Hz-1Hz-10Hz
-duty cycle 0%-100%, default 10%??
+duty cycle 0%-100%, Mittelstellung ist 50%
 duty cycle<5% = always low
 duty cycle>95& = always high
 
