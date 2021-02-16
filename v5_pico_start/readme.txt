@@ -1,8 +1,13 @@
 https://www.heise.de/developer/artikel/Ein-Picobello-Microcontroller-Raspberry-Pi-Pico-Board-5045274.html
+https://www.cnx-software.com/2021/01/27/a-closer-look-at-raspberry-pi-rp2040-programmable-ios-pio/
+https://tutorials-raspberrypi.de/raspberry-pi-pico-mikrocontroller-programmieren/
 
+https://hackspace.raspberrypi.org/articles/what-is-programmable-i-o-on-raspberry-pi-pico
+https://www.seeedstudio.com/blog/2021/01/25/programmable-io-with-raspberry-pi-pico/
+https://learn.adafruit.com/getting-started-with-raspberry-pi-pico-circuitpython
 https://www.cnx-software.com/2021/01/27/a-closer-look-at-raspberry-pi-rp2040-programmable-ios-pio/
 
-https://tutorials-raspberrypi.de/raspberry-pi-pico-mikrocontroller-programmieren/
+
 
 MCP3008-I/P
 
