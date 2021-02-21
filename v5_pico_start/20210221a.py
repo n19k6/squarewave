@@ -8,7 +8,7 @@ def blink():
     nop().side(0x3)
     nop().side(0x0) [2]
     nop().side(0x1)
-    nop().side(0x0) [2]
+    nop().side(0x0) [1]
     set(y, 31) #32 loops
     label("loop")
     nop().side(0x1)
