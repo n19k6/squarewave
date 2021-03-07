@@ -28,3 +28,14 @@ Raspberry Pi Pico - USB HID Auto Clicker with Circuit Python
 5x2 femaleXfemale
 
 blues teile breadboard book
+
+20210307:
+https://cdn-shop.adafruit.com/datasheets/MCP3008.pdf
+https://blog.rareschool.com/2021/02/raspberry-pi-pico-project-2-mcp3008.html
+
+todos:
+implement wegfahrsperre
+stop and instanciate pio maschine with frequency from poti
+research on sync pios, read from memory
+document requirements V10+V11+V12
+order mcp3008, 10kOhm poties 20, jumper, adapter osci, level shifter ic
