@@ -18,11 +18,12 @@ def blink():
     nop() [3]
     wrap()
    
-
+# easy eda
 # The frequency (which must be between 2000 and 125000000)
 #sm = rp2.StateMachine(0, blink, freq=48_310, sideset_base=Pin(1,0))
-sm = rp2.StateMachine(0, blink, freq=100_000, sideset_base=Pin(1,0))
+#                                    125000000
+sm = rp2.StateMachine(0, blink, freq=16000, sideset_base=Pin(1,0))
 
 sm.active(1)
-time.sleep(10)
+time.sleep(2000)
 sm.active(0)
