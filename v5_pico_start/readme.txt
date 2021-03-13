@@ -1,3 +1,34 @@
+20210313:
+
+begriffe:
+
+
+Vx:
+alle poties als 32 stellungs poties zu verstehen
+
+V10:
+kurbelwelle dreht mit 0,200-20000 U/min 34+2 zacken, duty 25%
+nockenwelle 3+4 synchron zu kurbelwelle mit verschiebung
+zuendsignal synchron zu kurbelwelle mit verschiebung
+
+zwei lambda sonden signale (=PWM) 0,1 Hz, 1Hz, 10 Hz + duty cyle  = 4 poties
+
+
+loesungsansaetze:
+a) lambda via pwm library
+b) andere signale via PIO mit sync oder PIO aus speicher
+
+V11:
+zuendaussetzer nicht nur an oder aus sondern aussetzer regelbar von 1/1000 aussetzer bis 1000/1000 aussetzer
+frage: per zufall (schwierig?)
+
+V12:
+wegfahrsperre
+kurbelwelle dreht nicht mit konstanter geschwindigkeit innerhalb einer drehung
+
+
+###################################
+
 https://www.heise.de/developer/artikel/Ein-Picobello-Microcontroller-Raspberry-Pi-Pico-Board-5045274.html
 https://www.cnx-software.com/2021/01/27/a-closer-look-at-raspberry-pi-rp2040-programmable-ios-pio/
 https://tutorials-raspberrypi.de/raspberry-pi-pico-mikrocontroller-programmieren/
