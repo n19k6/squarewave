@@ -1,2 +1,5 @@
 # ignore all files with filenames starting with underscore
--*
+_*
+*kill*
+private/
+
