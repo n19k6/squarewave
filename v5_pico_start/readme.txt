@@ -10,7 +10,8 @@ V10:
 kurbelwelle dreht mit 0,200-20000 U/min 34+2 zacken, duty 25%
 nockenwelle 3+4 synchron zu kurbelwelle mit verschiebung
 zuendsignal synchron zu kurbelwelle mit verschiebung
-
+zuenaussetzer 1,2,3,4 einzeln komplet aus oder an
+wegfahrsperre
 zwei lambda sonden signale (=PWM) 0,1 Hz, 1Hz, 10 Hz + duty cyle  = 4 poties
 
 
@@ -23,7 +24,6 @@ zuendaussetzer nicht nur an oder aus sondern aussetzer regelbar von 1/1000 ausse
 frage: per zufall (schwierig?)
 
 V12:
-wegfahrsperre
 kurbelwelle dreht nicht mit konstanter geschwindigkeit innerhalb einer drehung
 
 
