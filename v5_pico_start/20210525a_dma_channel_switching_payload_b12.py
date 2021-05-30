@@ -300,7 +300,8 @@ def send_data():
     jmp("start")
     #wrap()
 
-
+p16 = Pin(17, Pin.OUT, Pin.PULL_DOWN)
+p17 = Pin(18, Pin.OUT, Pin.PULL_DOWN)
 sm4 = rp2.StateMachine(4, send_data, freq=100_000, sideset_base=Pin(17), out_base=Pin(18), set_base=Pin(18))
 
 sleep(2)
@@ -360,7 +361,7 @@ p6 = Pin(6, Pin.OUT, Pin.PULL_DOWN)
 p7 = Pin(7, Pin.OUT, Pin.PULL_DOWN)
 p8 = Pin(8, Pin.OUT, Pin.PULL_DOWN)
 
-sm = rp2.StateMachine(0, signal, freq=200_000, out_base=p6)
+sm = rp2.StateMachine(0, signal, freq=200_00, out_base=p6)
 
 sm4.active(1)
 
@@ -375,10 +376,11 @@ print(sm)
 p2 = Pin(16, Pin.IN, Pin.PULL_UP)
 p2.irq(put_data, Pin.IRQ_FALLING)
 
-#while True:
-#    sleep(1)
+while True:
+    sleep(1)
+    put_data(1)
 
-# for i in range(3000):
+#for i in range(3000):
 #     print(i)
 #     sleep(0.1)
 #     put_data()
@@ -453,7 +455,7 @@ while True:
 #     sleep(0.5)
 #     d1.CTRL_TRIG.EN = 0
 
-#d0.CTRL_TRIG.EN = 0 
+#d0.CTRL_TRIG.EN = 0
 #sm.active(0)
 #print("off")
 #Pin(16, Pin.OUT).value(0)
