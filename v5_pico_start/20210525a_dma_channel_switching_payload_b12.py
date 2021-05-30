@@ -306,23 +306,24 @@ sm4 = rp2.StateMachine(4, send_data, freq=100_000, sideset_base=Pin(17), out_bas
 sleep(2)
 
 class PIOPWM:
-    def __init__(self, sm_id, pin, count_freq, max_count=(1 << 16) - 1):
-        print(pin)
-        self._sm = StateMachine(sm_id, pwm_prog, freq=2 * count_freq, sideset_base=Pin(pin))
+    def __init__(self, sm_id, pin_obj, count_freq, max_count=(1 << 16) - 1):
+        print(pin_obj)
+        self._sm = StateMachine(sm_id, pwm_prog, freq=2 * count_freq, sideset_base=pin_obj)
         # Use exec() to load max count into ISR
         self._sm.put(max_count)
         self._sm.exec("pull()")
         self._sm.exec("mov(isr, osr)")
         self._sm.active(1)
         self._max_count = max_count
-        self._pin = pin
+        self._pin = pin_obj
 
     def _set(self, value):
         # Minimum value is -1 (completely turn off), 0 actually still produces narrow pulse
         if value>self._max_count:
             self._sm.active(0)
             print("off: ", value)
-            Pin(self._pin, Pin.OUT).value(1)
+            self._pin.value(1)
+            #Pin(self._pin, Pin.OUT).value(1)
         else:
             if not(self._sm.active()):
                 self._sm.put(self._max_count)
@@ -344,8 +345,11 @@ class PIOPWM:
         
 #PIOPWM(1, 14, pwm_prog, max_count=(1 << 16) - 1, count_freq=int(65_790))
 
-pwm1=PIOPWM(1, 14, 65_7900)
-pwm2=PIOPWM(2, 15, 65_7900)
+p14 = Pin(14, Pin.OUT, Pin.PULL_DOWN)
+p15 = Pin(15, Pin.OUT, Pin.PULL_DOWN)
+
+pwm1=PIOPWM(1, p14, 65_7900)
+pwm2=PIOPWM(2, p15, 65_7900)
 
 #PIOPWM(2, 15, pwm_prog, max_count=(1 << 16) - 1, count_freq=int(657_900))
 
