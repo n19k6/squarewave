@@ -164,6 +164,11 @@ offset_n = 0
 offset_z = 0
 
 data = fill_array(offset_n, offset_z, False, True, True, True)
+
+for i in range(36):
+    data[i] = ~data[i]
+
+
 data2 = fill_array(-1, -2, True, True, False, True)
 
 print(addressof(data))
@@ -347,7 +352,11 @@ pwm2=PIOPWM(2, 15, 65_7900)
 pwm1.set(int((1<<16)*0.5))
 pwm2.set(int((1<<16)*0.75))
 
-sm = rp2.StateMachine(0, signal, freq=200_000, out_base=Pin(6))
+p6 = Pin(6, Pin.OUT, Pin.PULL_DOWN)
+p7 = Pin(7, Pin.OUT, Pin.PULL_DOWN)
+p8 = Pin(8, Pin.OUT, Pin.PULL_DOWN)
+
+sm = rp2.StateMachine(0, signal, freq=200_000, out_base=p6)
 
 sm4.active(1)
 
@@ -411,7 +420,8 @@ sm.active(1)
 while True:
     sleep(1)
 
-#sleep(2)
+#print("sleep 5")
+#sleep(5)
 
 # if False:
 #     #d0.CTRL_TRIG.EN = 0
