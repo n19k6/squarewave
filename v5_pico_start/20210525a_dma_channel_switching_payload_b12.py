@@ -1,6 +1,6 @@
 #https://github.com/hoihu/projects/blob/master/pico/dma.py
 
-
+#sdfsdf
 # 20.000 U/min = 333 U/s ~ 3 ms
 # 
 from rp2 import PIO, StateMachine, asm_pio
