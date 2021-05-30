@@ -453,7 +453,7 @@ while True:
 #     sleep(0.5)
 #     d1.CTRL_TRIG.EN = 0
 
-#d0.CTRL_TRIG.EN = 0
+#d0.CTRL_TRIG.EN = 0 
 #sm.active(0)
 #print("off")
 #Pin(16, Pin.OUT).value(0)
