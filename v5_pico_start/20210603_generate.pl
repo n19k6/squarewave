@@ -65,8 +65,8 @@ print '<path transform="translate(240)" d="M '.sprintf("%.3f", $scx[0]).' '.spri
 foreach my $i (0..2) {
 	print 'L '.sprintf("%.3f", $bcx[$i*36]).' '.sprintf("%.3f", $bcy[$i*36]).' ';
 	#print 'L '.sprintf("%.3f", $bcx[$i*4+1]).' '.sprintf("%.3f", $bcy[$i*4+1]).' ';
-	print 'A '.sprintf("%.3f", $br).' '.sprintf("%.3f", $br).' 0 0 1 '.sprintf("%.3f", $bcx[$i*36+10]).' '.sprintf("%.3f", $bcy[$i*36+1]).' ';
-	print 'L '.sprintf("%.3f", $scx[$i*36+10]).' '.sprintf("%.3f", $scy[$i*36+1]).' ';
+	print 'A '.sprintf("%.3f", $br).' '.sprintf("%.3f", $br).' 0 0 1 '.sprintf("%.3f", $bcx[$i*36+1]).' '.sprintf("%.3f", $bcy[$i*36+1]).' ';
+	print 'L '.sprintf("%.3f", $scx[$i*36+1]).' '.sprintf("%.3f", $scy[$i*36+1]).' ';
 	#print 'L '.sprintf("%.3f", $scx[$i*4+4]).' '.sprintf("%.3f", $scy[$i*4+4]).' ';
 	print 'A '.sprintf("%.3f", $sr).' '.sprintf("%.3f", $sr).' 0 0 1 '.sprintf("%.3f", $scx[(($i+1)*36) % 144]).' '.sprintf("%.3f", $scy[(($i+1)*36) % 144]).' ';
 }
