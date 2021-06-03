@@ -71,5 +71,5 @@ research on sync pios, read from memory
 document requirements V10+V11+V12
 order mcp3008, 10kOhm poties 20, jumper, adapter osci, level shifter ic
 
-(20210603_generate_out.svg)
-(20210307_mcp3008.png)
+![Alt Text](20210603_generate_out.svg)
+![Alt Text](20210307_mcp3008.png)
