@@ -1,434 +1,290 @@
-<svg width="640" height="480" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
-0
+<svg width="400" height="180" transform="translate(280 90) scale(3 3)" style="border: 1px solid #cccccc;" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
 <circle transform="translate(240) scale(1 1)" cx="98.91" cy="50.01" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="98.80" cy="45.01" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-1
 <circle transform="translate(240) scale(1 1)" cx="101.09" cy="50.01" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="101.20" cy="45.01" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-2
 <circle transform="translate(240) scale(1 1)" cx="103.27" cy="50.11" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="103.60" cy="45.12" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-3
 <circle transform="translate(240) scale(1 1)" cx="105.44" cy="50.30" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="105.99" cy="45.33" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-4
 <circle transform="translate(240) scale(1 1)" cx="107.61" cy="50.58" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="108.37" cy="45.64" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-5
 <circle transform="translate(240) scale(1 1)" cx="109.75" cy="50.96" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="110.73" cy="46.06" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-6
 <circle transform="translate(240) scale(1 1)" cx="111.88" cy="51.43" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="113.07" cy="46.58" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-7
 <circle transform="translate(240) scale(1 1)" cx="113.99" cy="52.00" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="115.39" cy="47.20" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-8
 <circle transform="translate(240) scale(1 1)" cx="116.07" cy="52.65" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="117.68" cy="47.92" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-9
 <circle transform="translate(240) scale(1 1)" cx="118.12" cy="53.40" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="119.93" cy="48.74" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-10
 <circle transform="translate(240) scale(1 1)" cx="120.14" cy="54.23" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="122.15" cy="49.66" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-11
 <circle transform="translate(240) scale(1 1)" cx="122.11" cy="55.16" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="124.33" cy="50.67" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-12
 <circle transform="translate(240) scale(1 1)" cx="124.05" cy="56.16" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="126.45" cy="51.78" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-13
 <circle transform="translate(240) scale(1 1)" cx="125.94" cy="57.25" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="128.53" cy="52.98" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-14
 <circle transform="translate(240) scale(1 1)" cx="127.78" cy="58.43" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="130.56" cy="54.27" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-15
 <circle transform="translate(240) scale(1 1)" cx="129.57" cy="59.68" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="132.52" cy="55.65" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-16
 <circle transform="translate(240) scale(1 1)" cx="131.30" cy="61.01" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="134.43" cy="57.11" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-17
 <circle transform="translate(240) scale(1 1)" cx="132.97" cy="62.41" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="136.26" cy="58.65" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-18
 <circle transform="translate(240) scale(1 1)" cx="134.58" cy="63.88" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="138.03" cy="60.27" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-19
 <circle transform="translate(240) scale(1 1)" cx="136.12" cy="65.42" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="139.73" cy="61.97" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-20
 <circle transform="translate(240) scale(1 1)" cx="137.59" cy="67.03" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="141.35" cy="63.74" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-21
 <circle transform="translate(240) scale(1 1)" cx="138.99" cy="68.70" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="142.89" cy="65.57" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-22
 <circle transform="translate(240) scale(1 1)" cx="140.32" cy="70.43" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="144.35" cy="67.48" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-23
 <circle transform="translate(240) scale(1 1)" cx="141.57" cy="72.22" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="145.73" cy="69.44" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-24
 <circle transform="translate(240) scale(1 1)" cx="142.75" cy="74.06" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="147.02" cy="71.47" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-25
 <circle transform="translate(240) scale(1 1)" cx="143.84" cy="75.95" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="148.22" cy="73.55" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-26
 <circle transform="translate(240) scale(1 1)" cx="144.84" cy="77.89" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="149.33" cy="75.67" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-27
 <circle transform="translate(240) scale(1 1)" cx="145.77" cy="79.86" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="150.34" cy="77.85" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-28
 <circle transform="translate(240) scale(1 1)" cx="146.60" cy="81.88" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="151.26" cy="80.07" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-29
 <circle transform="translate(240) scale(1 1)" cx="147.35" cy="83.93" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="152.08" cy="82.32" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-30
 <circle transform="translate(240) scale(1 1)" cx="148.00" cy="86.01" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="152.80" cy="84.61" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-31
 <circle transform="translate(240) scale(1 1)" cx="148.57" cy="88.12" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="153.42" cy="86.93" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-32
 <circle transform="translate(240) scale(1 1)" cx="149.04" cy="90.25" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="153.94" cy="89.27" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-33
 <circle transform="translate(240) scale(1 1)" cx="149.42" cy="92.39" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="154.36" cy="91.63" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-34
 <circle transform="translate(240) scale(1 1)" cx="149.70" cy="94.56" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="154.67" cy="94.01" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-35
 <circle transform="translate(240) scale(1 1)" cx="149.89" cy="96.73" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="154.88" cy="96.40" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-36
 <circle transform="translate(240) scale(1 1)" cx="149.99" cy="98.91" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="154.99" cy="98.80" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-37
 <circle transform="translate(240) scale(1 1)" cx="149.99" cy="101.09" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="154.99" cy="101.20" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-38
 <circle transform="translate(240) scale(1 1)" cx="149.89" cy="103.27" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="154.88" cy="103.60" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-39
 <circle transform="translate(240) scale(1 1)" cx="149.70" cy="105.44" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="154.67" cy="105.99" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-40
 <circle transform="translate(240) scale(1 1)" cx="149.42" cy="107.61" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="154.36" cy="108.37" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-41
 <circle transform="translate(240) scale(1 1)" cx="149.04" cy="109.75" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="153.94" cy="110.73" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-42
 <circle transform="translate(240) scale(1 1)" cx="148.57" cy="111.88" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="153.42" cy="113.07" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-43
 <circle transform="translate(240) scale(1 1)" cx="148.00" cy="113.99" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="152.80" cy="115.39" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-44
 <circle transform="translate(240) scale(1 1)" cx="147.35" cy="116.07" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="152.08" cy="117.68" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-45
 <circle transform="translate(240) scale(1 1)" cx="146.60" cy="118.12" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="151.26" cy="119.93" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-46
 <circle transform="translate(240) scale(1 1)" cx="145.77" cy="120.14" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="150.34" cy="122.15" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-47
 <circle transform="translate(240) scale(1 1)" cx="144.84" cy="122.11" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="149.33" cy="124.33" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-48
 <circle transform="translate(240) scale(1 1)" cx="143.84" cy="124.05" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="148.22" cy="126.45" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-49
 <circle transform="translate(240) scale(1 1)" cx="142.75" cy="125.94" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="147.02" cy="128.53" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-50
 <circle transform="translate(240) scale(1 1)" cx="141.57" cy="127.78" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="145.73" cy="130.56" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-51
 <circle transform="translate(240) scale(1 1)" cx="140.32" cy="129.57" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="144.35" cy="132.52" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-52
 <circle transform="translate(240) scale(1 1)" cx="138.99" cy="131.30" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="142.89" cy="134.43" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-53
 <circle transform="translate(240) scale(1 1)" cx="137.59" cy="132.97" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="141.35" cy="136.26" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-54
 <circle transform="translate(240) scale(1 1)" cx="136.12" cy="134.58" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="139.73" cy="138.03" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-55
 <circle transform="translate(240) scale(1 1)" cx="134.58" cy="136.12" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="138.03" cy="139.73" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-56
 <circle transform="translate(240) scale(1 1)" cx="132.97" cy="137.59" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="136.26" cy="141.35" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-57
 <circle transform="translate(240) scale(1 1)" cx="131.30" cy="138.99" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="134.43" cy="142.89" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-58
 <circle transform="translate(240) scale(1 1)" cx="129.57" cy="140.32" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="132.52" cy="144.35" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-59
 <circle transform="translate(240) scale(1 1)" cx="127.78" cy="141.57" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="130.56" cy="145.73" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-60
 <circle transform="translate(240) scale(1 1)" cx="125.94" cy="142.75" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="128.53" cy="147.02" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-61
 <circle transform="translate(240) scale(1 1)" cx="124.05" cy="143.84" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="126.45" cy="148.22" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-62
 <circle transform="translate(240) scale(1 1)" cx="122.11" cy="144.84" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="124.33" cy="149.33" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-63
 <circle transform="translate(240) scale(1 1)" cx="120.14" cy="145.77" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="122.15" cy="150.34" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-64
 <circle transform="translate(240) scale(1 1)" cx="118.12" cy="146.60" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="119.93" cy="151.26" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-65
 <circle transform="translate(240) scale(1 1)" cx="116.07" cy="147.35" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="117.68" cy="152.08" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-66
 <circle transform="translate(240) scale(1 1)" cx="113.99" cy="148.00" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="115.39" cy="152.80" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-67
 <circle transform="translate(240) scale(1 1)" cx="111.88" cy="148.57" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="113.07" cy="153.42" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-68
 <circle transform="translate(240) scale(1 1)" cx="109.75" cy="149.04" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="110.73" cy="153.94" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-69
 <circle transform="translate(240) scale(1 1)" cx="107.61" cy="149.42" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="108.37" cy="154.36" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-70
 <circle transform="translate(240) scale(1 1)" cx="105.44" cy="149.70" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="105.99" cy="154.67" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-71
 <circle transform="translate(240) scale(1 1)" cx="103.27" cy="149.89" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="103.60" cy="154.88" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-72
 <circle transform="translate(240) scale(1 1)" cx="101.09" cy="149.99" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="101.20" cy="154.99" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-73
 <circle transform="translate(240) scale(1 1)" cx="98.91" cy="149.99" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="98.80" cy="154.99" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-74
 <circle transform="translate(240) scale(1 1)" cx="96.73" cy="149.89" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="96.40" cy="154.88" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-75
 <circle transform="translate(240) scale(1 1)" cx="94.56" cy="149.70" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="94.01" cy="154.67" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-76
 <circle transform="translate(240) scale(1 1)" cx="92.39" cy="149.42" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="91.63" cy="154.36" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-77
 <circle transform="translate(240) scale(1 1)" cx="90.25" cy="149.04" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="89.27" cy="153.94" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-78
 <circle transform="translate(240) scale(1 1)" cx="88.12" cy="148.57" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="86.93" cy="153.42" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-79
 <circle transform="translate(240) scale(1 1)" cx="86.01" cy="148.00" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="84.61" cy="152.80" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-80
 <circle transform="translate(240) scale(1 1)" cx="83.93" cy="147.35" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="82.32" cy="152.08" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-81
 <circle transform="translate(240) scale(1 1)" cx="81.88" cy="146.60" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="80.07" cy="151.26" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-82
 <circle transform="translate(240) scale(1 1)" cx="79.86" cy="145.77" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="77.85" cy="150.34" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-83
 <circle transform="translate(240) scale(1 1)" cx="77.89" cy="144.84" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="75.67" cy="149.33" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-84
 <circle transform="translate(240) scale(1 1)" cx="75.95" cy="143.84" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="73.55" cy="148.22" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-85
 <circle transform="translate(240) scale(1 1)" cx="74.06" cy="142.75" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="71.47" cy="147.02" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-86
 <circle transform="translate(240) scale(1 1)" cx="72.22" cy="141.57" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="69.44" cy="145.73" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-87
 <circle transform="translate(240) scale(1 1)" cx="70.43" cy="140.32" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="67.48" cy="144.35" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-88
 <circle transform="translate(240) scale(1 1)" cx="68.70" cy="138.99" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="65.57" cy="142.89" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-89
 <circle transform="translate(240) scale(1 1)" cx="67.03" cy="137.59" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="63.74" cy="141.35" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-90
 <circle transform="translate(240) scale(1 1)" cx="65.42" cy="136.12" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="61.97" cy="139.73" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-91
 <circle transform="translate(240) scale(1 1)" cx="63.88" cy="134.58" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="60.27" cy="138.03" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-92
 <circle transform="translate(240) scale(1 1)" cx="62.41" cy="132.97" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="58.65" cy="136.26" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-93
 <circle transform="translate(240) scale(1 1)" cx="61.01" cy="131.30" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="57.11" cy="134.43" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-94
 <circle transform="translate(240) scale(1 1)" cx="59.68" cy="129.57" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="55.65" cy="132.52" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-95
 <circle transform="translate(240) scale(1 1)" cx="58.43" cy="127.78" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="54.27" cy="130.56" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-96
 <circle transform="translate(240) scale(1 1)" cx="57.25" cy="125.94" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="52.98" cy="128.53" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-97
 <circle transform="translate(240) scale(1 1)" cx="56.16" cy="124.05" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="51.78" cy="126.45" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-98
 <circle transform="translate(240) scale(1 1)" cx="55.16" cy="122.11" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="50.67" cy="124.33" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-99
 <circle transform="translate(240) scale(1 1)" cx="54.23" cy="120.14" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="49.66" cy="122.15" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-100
 <circle transform="translate(240) scale(1 1)" cx="53.40" cy="118.12" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="48.74" cy="119.93" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-101
 <circle transform="translate(240) scale(1 1)" cx="52.65" cy="116.07" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="47.92" cy="117.68" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-102
 <circle transform="translate(240) scale(1 1)" cx="52.00" cy="113.99" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="47.20" cy="115.39" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-103
 <circle transform="translate(240) scale(1 1)" cx="51.43" cy="111.88" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="46.58" cy="113.07" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-104
 <circle transform="translate(240) scale(1 1)" cx="50.96" cy="109.75" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="46.06" cy="110.73" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-105
 <circle transform="translate(240) scale(1 1)" cx="50.58" cy="107.61" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="45.64" cy="108.37" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-106
 <circle transform="translate(240) scale(1 1)" cx="50.30" cy="105.44" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="45.33" cy="105.99" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-107
 <circle transform="translate(240) scale(1 1)" cx="50.11" cy="103.27" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="45.12" cy="103.60" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-108
 <circle transform="translate(240) scale(1 1)" cx="50.01" cy="101.09" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="45.01" cy="101.20" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-109
 <circle transform="translate(240) scale(1 1)" cx="50.01" cy="98.91" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="45.01" cy="98.80" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-110
 <circle transform="translate(240) scale(1 1)" cx="50.11" cy="96.73" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="45.12" cy="96.40" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-111
 <circle transform="translate(240) scale(1 1)" cx="50.30" cy="94.56" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="45.33" cy="94.01" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-112
 <circle transform="translate(240) scale(1 1)" cx="50.58" cy="92.39" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="45.64" cy="91.63" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-113
 <circle transform="translate(240) scale(1 1)" cx="50.96" cy="90.25" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="46.06" cy="89.27" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-114
 <circle transform="translate(240) scale(1 1)" cx="51.43" cy="88.12" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="46.58" cy="86.93" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-115
 <circle transform="translate(240) scale(1 1)" cx="52.00" cy="86.01" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="47.20" cy="84.61" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-116
 <circle transform="translate(240) scale(1 1)" cx="52.65" cy="83.93" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="47.92" cy="82.32" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-117
 <circle transform="translate(240) scale(1 1)" cx="53.40" cy="81.88" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="48.74" cy="80.07" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-118
 <circle transform="translate(240) scale(1 1)" cx="54.23" cy="79.86" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="49.66" cy="77.85" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-119
 <circle transform="translate(240) scale(1 1)" cx="55.16" cy="77.89" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="50.67" cy="75.67" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-120
 <circle transform="translate(240) scale(1 1)" cx="56.16" cy="75.95" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="51.78" cy="73.55" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-121
 <circle transform="translate(240) scale(1 1)" cx="57.25" cy="74.06" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="52.98" cy="71.47" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-122
 <circle transform="translate(240) scale(1 1)" cx="58.43" cy="72.22" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="54.27" cy="69.44" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-123
 <circle transform="translate(240) scale(1 1)" cx="59.68" cy="70.43" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="55.65" cy="67.48" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-124
 <circle transform="translate(240) scale(1 1)" cx="61.01" cy="68.70" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="57.11" cy="65.57" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-125
 <circle transform="translate(240) scale(1 1)" cx="62.41" cy="67.03" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="58.65" cy="63.74" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-126
 <circle transform="translate(240) scale(1 1)" cx="63.88" cy="65.42" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="60.27" cy="61.97" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-127
 <circle transform="translate(240) scale(1 1)" cx="65.42" cy="63.88" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="61.97" cy="60.27" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-128
 <circle transform="translate(240) scale(1 1)" cx="67.03" cy="62.41" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="63.74" cy="58.65" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-129
 <circle transform="translate(240) scale(1 1)" cx="68.70" cy="61.01" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="65.57" cy="57.11" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-130
 <circle transform="translate(240) scale(1 1)" cx="70.43" cy="59.68" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="67.48" cy="55.65" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-131
 <circle transform="translate(240) scale(1 1)" cx="72.22" cy="58.43" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="69.44" cy="54.27" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-132
 <circle transform="translate(240) scale(1 1)" cx="74.06" cy="57.25" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="71.47" cy="52.98" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-133
 <circle transform="translate(240) scale(1 1)" cx="75.95" cy="56.16" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="73.55" cy="51.78" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-134
 <circle transform="translate(240) scale(1 1)" cx="77.89" cy="55.16" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="75.67" cy="50.67" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-135
 <circle transform="translate(240) scale(1 1)" cx="79.86" cy="54.23" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="77.85" cy="49.66" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-136
 <circle transform="translate(240) scale(1 1)" cx="81.88" cy="53.40" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="80.07" cy="48.74" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-137
 <circle transform="translate(240) scale(1 1)" cx="83.93" cy="52.65" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="82.32" cy="47.92" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-138
 <circle transform="translate(240) scale(1 1)" cx="86.01" cy="52.00" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="84.61" cy="47.20" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-139
 <circle transform="translate(240) scale(1 1)" cx="88.12" cy="51.43" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="86.93" cy="46.58" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-140
 <circle transform="translate(240) scale(1 1)" cx="90.25" cy="50.96" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="89.27" cy="46.06" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-141
 <circle transform="translate(240) scale(1 1)" cx="92.39" cy="50.58" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="91.63" cy="45.64" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-142
 <circle transform="translate(240) scale(1 1)" cx="94.56" cy="50.30" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="94.01" cy="45.33" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
-143
 <circle transform="translate(240) scale(1 1)" cx="96.73" cy="50.11" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <circle transform="translate(240) scale(1 1)" cx="96.40" cy="45.12" r="1" stroke="red" fill="transparent" stroke-width="0.1"/>
 <path transform="translate(0.00) scale(1 1)" d="M 98.91 50.01 L 98.80 45.01 A 55.00 55.00 0 0 1 101.20 45.01 L 101.09 50.01 A 50.00 50.00 0 0 1 107.61 50.58 L 108.37 45.64 A 55.00 55.00 0 0 1 110.73 46.06 L 109.75 50.96 A 50.00 50.00 0 0 1 116.07 52.65 L 117.68 47.92 A 55.00 55.00 0 0 1 119.93 48.74 L 118.12 53.40 A 50.00 50.00 0 0 1 124.05 56.16 L 126.45 51.78 A 55.00 55.00 0 0 1 128.53 52.98 L 125.94 57.25 A 50.00 50.00 0 0 1 131.30 61.01 L 134.43 57.11 A 55.00 55.00 0 0 1 136.26 58.65 L 132.97 62.41 A 50.00 50.00 0 0 1 137.59 67.03 L 141.35 63.74 A 55.00 55.00 0 0 1 142.89 65.57 L 138.99 68.70 A 50.00 50.00 0 0 1 142.75 74.06 L 147.02 71.47 A 55.00 55.00 0 0 1 148.22 73.55 L 143.84 75.95 A 50.00 50.00 0 0 1 146.60 81.88 L 151.26 80.07 A 55.00 55.00 0 0 1 152.08 82.32 L 147.35 83.93 A 50.00 50.00 0 0 1 149.04 90.25 L 153.94 89.27 A 55.00 55.00 0 0 1 154.36 91.63 L 149.42 92.39 A 50.00 50.00 0 0 1 149.99 98.91 L 154.99 98.80 A 55.00 55.00 0 0 1 154.99 101.20 L 149.99 101.09 A 50.00 50.00 0 0 1 149.42 107.61 L 154.36 108.37 A 55.00 55.00 0 0 1 153.94 110.73 L 149.04 109.75 A 50.00 50.00 0 0 1 147.35 116.07 L 152.08 117.68 A 55.00 55.00 0 0 1 151.26 119.93 L 146.60 118.12 A 50.00 50.00 0 0 1 143.84 124.05 L 148.22 126.45 A 55.00 55.00 0 0 1 147.02 128.53 L 142.75 125.94 A 50.00 50.00 0 0 1 138.99 131.30 L 142.89 134.43 A 55.00 55.00 0 0 1 141.35 136.26 L 137.59 132.97 A 50.00 50.00 0 0 1 132.97 137.59 L 136.26 141.35 A 55.00 55.00 0 0 1 134.43 142.89 L 131.30 138.99 A 50.00 50.00 0 0 1 125.94 142.75 L 128.53 147.02 A 55.00 55.00 0 0 1 126.45 148.22 L 124.05 143.84 A 50.00 50.00 0 0 1 118.12 146.60 L 119.93 151.26 A 55.00 55.00 0 0 1 117.68 152.08 L 116.07 147.35 A 50.00 50.00 0 0 1 109.75 149.04 L 110.73 153.94 A 55.00 55.00 0 0 1 108.37 154.36 L 107.61 149.42 A 50.00 50.00 0 0 1 101.09 149.99 L 101.20 154.99 A 55.00 55.00 0 0 1 98.80 154.99 L 98.91 149.99 A 50.00 50.00 0 0 1 92.39 149.42 L 91.63 154.36 A 55.00 55.00 0 0 1 89.27 153.94 L 90.25 149.04 A 50.00 50.00 0 0 1 83.93 147.35 L 82.32 152.08 A 55.00 55.00 0 0 1 80.07 151.26 L 81.88 146.60 A 50.00 50.00 0 0 1 75.95 143.84 L 73.55 148.22 A 55.00 55.00 0 0 1 71.47 147.02 L 74.06 142.75 A 50.00 50.00 0 0 1 68.70 138.99 L 65.57 142.89 A 55.00 55.00 0 0 1 63.74 141.35 L 67.03 137.59 A 50.00 50.00 0 0 1 62.41 132.97 L 58.65 136.26 A 55.00 55.00 0 0 1 57.11 134.43 L 61.01 131.30 A 50.00 50.00 0 0 1 57.25 125.94 L 52.98 128.53 A 55.00 55.00 0 0 1 51.78 126.45 L 56.16 124.05 A 50.00 50.00 0 0 1 53.40 118.12 L 48.74 119.93 A 55.00 55.00 0 0 1 47.92 117.68 L 52.65 116.07 A 50.00 50.00 0 0 1 50.96 109.75 L 46.06 110.73 A 55.00 55.00 0 0 1 45.64 108.37 L 50.58 107.61 A 50.00 50.00 0 0 1 50.01 101.09 L 45.01 101.20 A 55.00 55.00 0 0 1 45.01 98.80 L 50.01 98.91 A 50.00 50.00 0 0 1 50.58 92.39 L 45.64 91.63 A 55.00 55.00 0 0 1 46.06 89.27 L 50.96 90.25 A 50.00 50.00 0 0 1 52.65 83.93 L 47.92 82.32 A 55.00 55.00 0 0 1 48.74 80.07 L 53.40 81.88 A 50.00 50.00 0 0 1 56.16 75.95 L 51.78 73.55 A 55.00 55.00 0 0 1 52.98 71.47 L 57.25 74.06 A 50.00 50.00 0 0 1 61.01 68.70 L 57.11 65.57 A 55.00 55.00 0 0 1 58.65 63.74 L 62.41 67.03 A 50.00 50.00 0 0 1 67.03 62.41 L 63.74 58.65 A 55.00 55.00 0 0 1 65.57 57.11 L 68.70 61.01 A 50.00 50.00 0 0 1 74.06 57.25 L 71.47 52.98 A 55.00 55.00 0 0 1 73.55 51.78 L 75.95 56.16 A 50.00 50.00 0 0 1 96.73 50.11 A 50.00 50.00 0 0 1 98.91 50.01 Z" stroke="blue" fill="transparent"/>
