@@ -1,0 +1,46 @@
+
+Anforderungen:
+--------------
+raspberry picohat durchnummerierte pins von P1-P40 + 3 debug pins 
+
+folgende pins werden benötigt:
+SPI+GPIO für ADC (MCP3008)
+SPI+GPIO für zweiten ABC (optional)
+
+RESET Pin über Jumper zugänglich machen, als reset schalter
+https://www.raspberrypi.org/blog/how-to-add-a-reset-button-to-your-raspberry-pi-pico/
+P38 (GND) mit P30 (RUN) über jumper rausführen
+
+4 GPIO eingänge für IGF1-IGF4
+
+4 Zusamenhängende GPIOs für CS, IGF und CRK
+IGF ist das signal von den Zündspulen. CS ist Camshaft, Nockenwelle. CRK ist Crankshaft, Kurbelwelle
+
+2 GPIO für LAmmda Signale
+
+2 GPIO herausführen zum debuging von signalen
+2 UART Pins für debugging
+
+
+Pinout:
+-------
+P1-P2 zum debuging als pin (d.h. nur loch auf platine herausführen)
+P3 zum debuging als pin herausführen
+
+P4-P6 für MCP3008 (A)
+P19 für MCP3008-CS (A)
+
+P14-P16 für MCP3008 (B=optionaler zweiter MCP3008)
+P19 für MCP3008-CS (B=optionaler zweiter MCP3008)
+
+P21 für Ausgangssignal Lambda1
+P22 für Ausgangssignal Lambda2
+
+P24 für Ausgangssignal CRK
+P25 für Ausgangssignal CS
+P26 für Ausgangssignal IGF
+P27 für Ausgangssignal: Debugging signal frequenz Kurbelwelle
+
+P30 über jumper mit GND verbindbar machen für reset
+
+

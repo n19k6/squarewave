@@ -70,27 +70,3 @@ stop and instanciate pio maschine with frequency from poti
 research on sync pios, read from memory
 document requirements V10+V11+V12
 order mcp3008, 10kOhm poties 20, jumper, adapter osci, level shifter ic
-#############################
-Hi,
-I am a PIO beginner. I am exited about the board and got started fast using the good documentation.
-I am porting a arduino sketch I programmed month ago for an arduino nano to generate a digital signal using a hardware timer and an ISR.
-It did worked but the the hardware was not capable to deliver the signal with the needed frequency, so I thought a good idea to try and get started with the pico.
-Especially I like the easy way to do programming with the Thonny IDE, hence no compile cycle or uploading of programs necessary.
-My idea is to use micropython for the not time critical parts and use the PIOs for signal generation.
-
-To get started the examples  micropython PIO examples are very valuable: https://github.com/raspberrypi/pico-examples
-
-To understand/use the PIO capabilities it would be great to have two mini examples demonstrating the following:
-a) cycle accurate sync of statemachines (see section 3.2.7 Interactions Between State Machines from the rp2040 datasheet: This allows cycle-accurate synchronisation between state machines)
-b) reading/consuming data from RAM
-
-The context of my questions is the following: 
-I have dump of a signal (on two pins, one clock, one data) that should be triggered if a special input pin goes low (see 20210322c_arduino_reference.png)
-I managed to implement the first 25% of the signal with PIO instructions and than reached the mark of 32 instructions, I think with much tinkering I might be able to represent the signal inside the 32 instractions, did only use the X register so far. (see 20210322a.py and 20210322a.png)
-
-Nevertheless if I know/understand cycle-accurate synchronisation between state machines it would be far more straightforward to generate the two synced signals.
-
-Thanks.
-
-Best regards,
-Raphael
