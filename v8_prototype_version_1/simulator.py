@@ -1,46 +1,13 @@
 from machine import Pin, SPI
-from time import sleep, sleep_ms
-
+from time import sleep, sleep_ms, ticks_ms
+from math import floor
 
 def main():
     
-    print(type(mcp3008_spi))
-    print(type(mcp3008_cs))
-    print(type(mcp3008_out_buf))
-    print(type(mcp3008_in_buf))
-    
-    mcp3008_cs.value(0) # select
-    print(mcp3008_cs.value())
-    mcp3008_out_buf[1] = ((not False) << 7) | (0 << 4)
-    mcp3008_spi.write_readinto(mcp3008_out_buf,mcp3008_in_buf)
-    mcp3008_cs.value(1) # turn off
-    print(mcp3008_cs.value())
-    print( ((mcp3008_in_buf[1] & 0x03) << 8) | mcp3008_in_buf[2])
-    #print("read(0) {}".format(read(0))
-    #print("Before: b={}".format(b))
-    
-
-def mcp3008_read(pin):
-    '''this is the doc string of the function'''
     global mcp3008_spi
     global mcp3008_cs
     global mcp3008_out_buf
     global mcp3008_in_buf
-    
-    print(mcp3008_cs.value())
-    
-    mcp3008_cs.value(0) # select
-    print(mcp3008_cs.value())
-    mcp3008_out_buf[1] = ((not False) << 7) | (pin << 4)
-    mcp3008_spi.write_readinto(mcp3008_out_buf,mcp3008_in_buf)
-    mcp3008_cs.value(1) # turn off
-    return ((mcp3008_in_buf[1] & 0x03) << 8) | mcp3008_in_buf[2]
-
-
-if __name__ == '__main__':
-   
-    print("start")
-
     # initialize
     mcp3008_spi = SPI(0, sck=Pin(2),mosi=Pin(3),miso=Pin(4), baudrate=10000)
     mcp3008_cs = Pin(5, Pin.OUT)
@@ -51,9 +18,95 @@ if __name__ == '__main__':
     mcp3008_out_buf[0] = 0x01
     mcp3008_in_buf = bytearray(3)
     
-    print(mcp3008_read(7))
+    #a=[chip.read(7),chip.read(6),chip.read(5),chip.read(4),chip.read(0),chip.read(1),chip.read(2),chip.read(3)]
+    global m
+    m = [7,6,5,4,0,1,2,3]
     
-    print("ende")
+    led = Pin(25, Pin.OUT)
+    led.off()
+    
+    last_measurement = mcp3008_read_all()
+    
+    c = 0
+    print(c,last_measurement); c=c+1
+    
+    last_value = [last_measurement[0]//16, last_measurement[1]//16, last_measurement[2]//16, last_measurement[3]//16, \
+                  last_measurement[4]//16, last_measurement[5]//16, last_measurement[6]//16, last_measurement[7]//16]
+    
+    led.value(last_value[3]//512)
+    
+    #print(mcp3008_read(m[0]))
+    
+    while True:
+        #t0=ticks_ms()
+        #t1=ticks_ms()
+        current_measurement = mcp3008_read_all()
+        #t1=ticks_ms()
+        # TODO: auftrennen nach kanaelen!!!
+        current_value = [current_measurement[0]//16, current_measurement[1]//16, current_measurement[2]//16, current_measurement[3]//16, \
+                         current_measurement[4]//16, current_measurement[5]//16, current_measurement[6]//16, current_measurement[7]//16]
+        distance = max(abs(current_measurement[0]-last_measurement[0]), \
+                       abs(current_measurement[1]-last_measurement[1]), \
+                       abs(current_measurement[2]-last_measurement[2]), \
+                       abs(current_measurement[3]-last_measurement[3]), \
+                       abs(current_measurement[4]-last_measurement[4]), \
+                       abs(current_measurement[5]-last_measurement[5]), \
+                       abs(current_measurement[6]-last_measurement[6]), \
+                       abs(current_measurement[7]-last_measurement[7]))
+        if distance>20:
+            #print(c,current_measurement); c=c+1
+            print(c,current_value); c=c+1
+            # led
+            if(current_measurement[3]//512 != last_measurement[3]//512):
+                led.value(current_measurement[3]//512)
+                print("led changed:", current_measurement[3]//512)
+            # frequency ox1
+            if(current_value[4] != last_value[4]):
+                # 0-63 -> 10**(-1-1)
+                print("ox1 frequency changed:", floor_precision(10**(translate(current_value[4], 0, 63, -1, 1)),2))
+            # duty cycle ox1
+            if(current_value[5] != last_value[5]):
+                # 0-63 -> 10-90
+                print("ox1 duty changed:", int(translate(current_value[5], 0, 63, 10, 90)))
+            
+            last_measurement = current_measurement
+            last_value = current_value
+        #t1=ticks_ms()
+        #print(t1-t0)
+        sleep(0.1)
+
+def floor_precision(value, precision):
+    return floor(value*(10**precision))/(10**precision)
+
+def translate(value, min_1, max_1, min_2, max_2):
+    range_1 = max_1 - min_1
+    range_2 = max_2 - min_2
+    normalized_value = float(value - min_1) / float(range_1)
+    return min_2 + (normalized_value * range_2)
+
+def mcp3008_read_all():
+    return [mcp3008_read(m[0]), mcp3008_read(m[1]), mcp3008_read(m[2]), mcp3008_read(m[3]), \
+            mcp3008_read(m[4]), mcp3008_read(m[5]), mcp3008_read(m[6]), mcp3008_read(m[7])]
+
+def mcp3008_read(pin):
+    '''this is the doc string of the function'''
+    global mcp3008_spi
+    global mcp3008_cs
+    global mcp3008_out_buf
+    global mcp3008_in_buf
+    
+    mcp3008_cs.value(0) # select
+    mcp3008_out_buf[1] = ((not False) << 7) | (pin << 4)
+    mcp3008_spi.write_readinto(mcp3008_out_buf,mcp3008_in_buf)
+    mcp3008_cs.value(1) # turn off
+    return ((mcp3008_in_buf[1] & 0x03) << 8) | mcp3008_in_buf[2]
+
+
+if __name__ == '__main__':
+   
+    print("invoking main")
+    main()
+    print("end of program")
    
 
 #led = Pin(25, Pin.OUT)
