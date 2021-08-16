@@ -24,7 +24,7 @@ def main():
     
     led = Pin(25, Pin.OUT)
     led.off()
-    
+    sleep(1)
     last_measurement = mcp3008_read_all()
     
     c = 0
@@ -36,6 +36,8 @@ def main():
     led.value(last_value[3]//512)
     
     #print(mcp3008_read(m[0]))
+    min_1 = 1023
+    max_1 = 0
     
     while True:
         #t0=ticks_ms()
@@ -53,9 +55,11 @@ def main():
                        abs(current_measurement[5]-last_measurement[5]), \
                        abs(current_measurement[6]-last_measurement[6]), \
                        abs(current_measurement[7]-last_measurement[7]))
+        min_1 = min(min_1, current_measurement[6])
+        max_1 = max(max_1, current_measurement[6])
         if distance>20:
             #print(c,current_measurement); c=c+1
-            print(c,current_value); c=c+1
+            print("[",k1(current_value, last_value),"]",c,current_measurement, min_1, max_1); c=c+1
             # led
             if(current_measurement[3]//512 != last_measurement[3]//512):
                 led.value(current_measurement[3]//512)
@@ -74,6 +78,13 @@ def main():
         #t1=ticks_ms()
         #print(t1-t0)
         sleep(0.1)
+
+def k1(a,b):
+    i = 0
+    for index,item in enumerate(a):
+        if a[index] != b[index]:
+            i = i+1
+    return i
 
 def floor_precision(value, precision):
     return floor(value*(10**precision))/(10**precision)
