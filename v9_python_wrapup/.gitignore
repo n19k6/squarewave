@@ -2,4 +2,5 @@
 *.pyc
 __pycache__/
 v9_1/__pycache__/
+v9_1/__pycache__/*.pyc
 
