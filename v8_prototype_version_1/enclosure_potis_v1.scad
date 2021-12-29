@@ -1,3 +1,5 @@
+// attention: holes and squares for poties are to small
+
 $fn=30;
 
 translate([80,-130])
