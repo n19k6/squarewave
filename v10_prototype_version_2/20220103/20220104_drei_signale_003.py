@@ -264,7 +264,7 @@ def signal():
     #out(pins, 3)
     #out(x, 1)
     out(x, 1)
-    out(pins, 3)
+    out(pins, 3) [31]
     wrap()
 # minimum frequency is 2500    
 
@@ -366,7 +366,7 @@ sleep(2)
 #pwm1.set(int((1<<16)*0.5))
 #pwm2.set(int((1<<16)*0.75))
 
-sm = rp2.StateMachine(0, signal, freq=400_000, out_base=Pin(6))
+sm = rp2.StateMachine(0, signal, freq=3_000, out_base=Pin(6))
 
 #sm4.active(1)
 

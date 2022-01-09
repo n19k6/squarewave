@@ -53,3 +53,13 @@ print(clkdiv_int)
 sm.active(1)
 time.sleep(1)
 sm.active(0)
+
+print("--")
+
+for i in [3000,4000,6000,200_000]:
+    print(i)
+    sm = rp2.StateMachine(0, blink, freq=i, set_base=Pin(16))
+    time.sleep(1)
+    word = mem32[SM0_CLKDIV]
+    print(bin(word))
+    time.sleep(1)
