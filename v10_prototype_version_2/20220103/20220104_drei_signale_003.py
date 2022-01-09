@@ -175,7 +175,7 @@ def fill_array(n, z, z1=True, z2=True, z3=True, z4=True):
         #print(j)
         #a[j] = a[j] & ~(1<<31-k)
         #a[j] = a[j] & ~(1<<31-k)
-        a[j] = a[j] | 1<<31-k               
+        a[j] = a[j] | 1<<31-k
     return a
 
 
