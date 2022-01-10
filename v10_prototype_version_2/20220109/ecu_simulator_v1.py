@@ -175,6 +175,16 @@ def fill_array(n, z, z1=True, z2=True, z3=True, z4=True):
         #a[j] = a[j] & ~(1<<31-k)
         #a[j] = a[j] & ~(1<<31-k)
         a[j] = a[j] | 1<<31-k
+
+    # 32 bit laenge invertiere signale
+    for i in range(36):
+        # 3-er signal
+        #a[i] = a[i] ^ 0b0100_0100_0100_0100_0100_0100_0100_0100
+        # 4-er signal
+        a[i] = a[i] ^ 0b0010_0010_0010_0010_0010_0010_0010_0010        
+        # invert 34-er signal
+        #a[i] = a[i] ^ 0b0001_0001_0001_0001_0001_0001_0001_0001
+        
     return a
 
 
