@@ -11,7 +11,9 @@
 
 
 # todos: raphael
-# pinout ascii
+# - pinout ascii
+# - drei signale als 244 length string angeben und mit phasen verschiebung
+# - min und max von kurbelwellen signal: 2 Hz, 140 Hz
 
 # https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf
 # https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf
@@ -94,6 +96,8 @@ def fill_array(n, z, z1=True, z2=True, z3=True, z4=True):
     
     a = array("I", [0 for _ in range(36)])
     a[0] = a[0] | 1<<31
+    #a[17] = a[17] | 1<<31
+    a[18] = a[18] | 1<<31
 
     for i in range(288*4):
         if i%4 == 0 and i%8 == 0: 
@@ -179,7 +183,7 @@ def fill_array(n, z, z1=True, z2=True, z3=True, z4=True):
     # 32 bit laenge invertiere signale
     for i in range(36):
         # 3-er signal
-        a[i] = a[i] ^ 0b0100_0100_0100_0100_0100_0100_0100_0100
+        #a[i] = a[i] ^ 0b0100_0100_0100_0100_0100_0100_0100_0100
         # 4-er signal
         a[i] = a[i] ^ 0b0010_0010_0010_0010_0010_0010_0010_0010        
         # invert 34-er signal
@@ -256,8 +260,8 @@ print(ticks_diff(t1, t0))
 
 @rp2.asm_pio(
     # zuendung, nockewelle, kurbelwelle, debug gggdfdf
-    #out_init=(rp2.PIO.OUT_HIGH, rp2.PIO.OUT_LOW, rp2.PIO.OUT_LOW, rp2.PIO.OUT_LOW),
-    out_init=(rp2.PIO.OUT_HIGH, rp2.PIO.OUT_LOW, rp2.PIO.OUT_LOW),
+    out_init=(rp2.PIO.OUT_HIGH, rp2.PIO.OUT_LOW, rp2.PIO.OUT_LOW, rp2.PIO.OUT_LOW),
+    #out_init=(rp2.PIO.OUT_HIGH, rp2.PIO.OUT_LOW, rp2.PIO.OUT_LOW),
     #out_init=(rp2.PIO.OUT_LOW),
     out_shiftdir=rp2.PIO.SHIFT_LEFT,
     autopull=True,
@@ -268,11 +272,14 @@ def signal():
     #out(x, 3)
     #out(pins, 3)
     #out(x, 1)
-    out(x, 1)
-    out(pins, 3)
+    #out(x, 1)
+    #out(pins, 3)
+    out(pins, 4) [8]
     wrap()
 
-sm = rp2.StateMachine(0, signal, freq=3_000, out_base=Pin(6))
+#sm = rp2.StateMachine(0, signal, freq=3_000, out_base=Pin(6))
+sm = rp2.StateMachine(0, signal, freq=173_725, out_base=Pin(6))
+
 
 
 
