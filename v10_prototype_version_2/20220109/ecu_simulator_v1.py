@@ -31,6 +31,9 @@ from uctypes import BF_POS, BF_LEN, BFUINT32, UINT32, struct, addressof
 from machine import Pin, SPI, mem32
 from time import sleep, sleep_ms, ticks_ms, ticks_diff
 from array import array
+from re import match
+from sys import exit
+
 #from mcp3008 import MCP3008
 
 PIO0_BASE = 0x50200000
@@ -92,105 +95,175 @@ def init_channels():
 
 init_channels()
 
-def fill_array(n, z, z1=True, z2=True, z3=True, z4=True):
+# "111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"
+# "0"*144
+# "111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"
+# "100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+
+
+#signal_1a = "1110"*36
+#signal_2a = "1000"+"0000"*35
+#signal_3a = "1000"+"0000"*35
+#signal_4a = "1000"+"0000"*35
+
+#signal_1b = "1110"*36
+#signal_2b = "0000"*36
+#signal_3b = "0000"*36
+#signal_4b = "0000"*36
+
+signal_1a = "1100"*34+"0000"+"0000"
+signal_2a = "1100"+"0000"*17+"1100"+"0000"*17
+#signal_2a = "110000000000000000000000000000000000000000000000000000000000000000000000"+"110000000000000000000000000000000000000000000000000000000000000000000000"
+#signal_2a = "110000000000000000000000000000000000000000000000000000000000000000000000011000000000000000000000000000000000000000000000000000000000000000000000"
+signal_3a = "1000"+"0000"*17+"1000"+"0000"*17
+#signal_3a = "100000000000000000000000000000000000000000000000000000000000000000000000"+"100000000000000000000000000000000000000000000000000000000000000000000000"
+signal_4a = "100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+
+
+signal_1b = "1100"*34+"0000"+"0000"
+signal_2b = "1100"+"0000"*17+"0000"+"0000"*17
+#signal_2b = "110000000000000000000000000000000000000000000000000000000000000000000000"+"000000000000000000000000000000000000000000000000000000000000000000000000"
+#signal_2b = "110000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+signal_3b = "1000"+"0000"*17+"1000"+"0000"*17
+#todo: anzahl
+#signal_3b = "100000000000000000000000000000000000000000000000000000000000000000000000"+"100000000000000000000000000000000000000000000000000000000000000000000000"
+signal_4b = "100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+
+#signal_2a = "0000"*36
+#signal_3a = "0000"*36
+
+#signal_2b = "0000"*36
+#signal_3b = "0000"*36
+
+#signal_2a = signal_4a
+#signal_3a = signal_4a
+
+#signal_2b = signal_4b
+#signal_3b = signal_4b
+
+# check format of signals
+
+#https://docs.micropython.org/en/latest/library/re.html -> counted repetitions ({m,n}) are not supported in micropython
+
+signals = [signal_1a, signal_2a, signal_3a, signal_4a, signal_1b, signal_2b, signal_3b, signal_4b]
+
+#if (not re.match("^[01]+$", signal_1) or len(signal_1) != 34):
+# print("E: signal_1 is not a valid string")
+# sys.exit(1)
+
+for signal in signals:
+    if (not match("^[01]+$", signal) or len(signal) != 144):
+        print("E: signal \""+signal+"\" is not a valid string")
+        exit(1)
+
+signal_1 = signal_1a+signal_1b
+signal_2 = signal_2a+signal_2b
+signal_3 = signal_3a+signal_3b
+signal_4 = signal_4a+signal_4b
+
+mem_slot_1 = array("I", [0 for _ in range(36)])
+mem_slot_2 = array("I", [0 for _ in range(36)])
+
+
+def bad_fill_mem_slot_1(n, z):
+    global mem_slot_1
+    #mem_slot_1[0] = 0b00001011
+    #signal_1 = "1100111100001111"
+    print("a")
+    for s in range(len(signal_1)):
+        #calculate j (junk), k (position)
+        i = s*4+1
+        j, k = int(i/32), i % 32
+        if signal_1[s] == "1":
+            mem_slot_1[j] = mem_slot_1[j] | 1<<31-k
+        else:
+            mem_slot_1[j] = mem_slot_1[j] & ~(1<<31-k)
+
+    for s in range(len(signal_2)):
+        #calculate j (junk), k (position)
+        i = ((s*4+n*4)+2) % 288
+        j, k = int(i/32), i % 32
+
+        if signal_1[s] == "1":
+            mem_slot_1[j] = mem_slot_1[j] | 1<<31-k
+        else:
+            mem_slot_1[j] = mem_slot_1[j] & ~(1<<31-k)
+
+    for s in range(len(signal_3)):
+        #calculate j (junk), k (position)
+        i = ((s*4+z*4)+3) % 288
+        j, k = int(i/32), i % 32
+        if signal_1[s] == "1":
+            mem_slot_1[j] = mem_slot_1[j] | 1<<31-k
+        else:
+            mem_slot_1[j] = mem_slot_1[j] & ~(1<<31-k)
+
+    for s in range(len(signal_4)):
+        #calculate j (junk), k (position)
+        i = s*4
+        j, k = int(i/32), i % 32
+        if signal_4[s] == "1":
+            mem_slot_1[j] = mem_slot_1[j] | 1<<31-k
+            print("b")
+        else:
+            mem_slot_1[j] = mem_slot_1[j] & ~(1<<31-k)
+
+
+def fill_mem_slot_2(n, z):
+    global mem_slot_2
+    #mem_slot_2[0] = 0b00001011
+    #signal_1 = "1100111100001111"
+    print("a")
     
-    a = array("I", [0 for _ in range(36)])
-    a[0] = a[0] | 1<<31
-    #a[17] = a[17] | 1<<31
-    a[18] = a[18] | 1<<31
-
-    for i in range(288*4):
-        if i%4 == 0 and i%8 == 0: 
-            #i = i*4+1
-            #j, k = int(i/32), i % 32
-            j = int(i/32)
-            k = i % 32
-            #a[j] = a[j] | 1<<31-k
-            
-    for i in range(34):
-        i = i*4*4+3
-        #j, k = int(i/32), i % 32
-        j = int(i/32)
-        k = i % 32
-        a[j] = a[j] | 1<<31-k
-
-    for i in range(34):
-        i = 144*4+i*4*4+3
-        #j, k = int(i/32), i % 32  ggg
-        j = int(i/32)
-        k = i % 32
-        #print(j)
-        a[j] = a[j] | 1<<31-k
-        
-# -----
-
-    for i in range(34):
-        i = i*4*4+3+4
-        #j, k = int(i/32), i % 32
-        j = int(i/32)
-        k = i % 32
-        a[j] = a[j] | 1<<31-k
-
-    for i in range(34):
-        i = 144*4+i*4*4+3+4
-        #j, k = int(i/32), i % 32  ggg
-        j = int(i/32)
-        k = i % 32
-        #print(j)
-        a[j] = a[j] | 1<<31-k
-
-# -----
-
-    for i in range(288):
-        i = i*4+2
-        #j, k = int(i/32), i % 32
-        j = int(i/32)
-        k = i % 32
-        a[j] = a[j] | 1<<31-k
-        
-
-    for i in range(4):
-        za=[z1,z2,z3,z4]
-        if za[i]:
-            i = i*72*4+2+z*4
-            i = i % (288*4)
-            #j, k = int(i/32), i % 32
-            j = int(i/32)
-            k = i % 32
-            #print(j)
-            #a[j] = a[j] | 1<<31-k
-            a[j] = a[j] & ~(1<<31-k)
-            
-    for i in range(288):
-        i = i*4+1
-        #j, k = int(i/32), i % 32
-        j = int(i/32)
-        k = i % 32
-        #printdef fill_array(n, z, z1=True, z2=True, z3=True, z4=True):
-        #a[j] = a[j] | 1<<31-k
-
-    for i in range(3):
-        i = i*72*4+1+n*4
-        #j, k = int(i/32), i % 32
-        i = i % (288*4)
-        j = int(i/32)
-        k = i % 32
-        #print(j)
-        #a[j] = a[j] & ~(1<<31-k)
-        #a[j] = a[j] & ~(1<<31-k)
-        a[j] = a[j] | 1<<31-k
-
-    # 32 bit laenge invertiere signale
     for i in range(36):
-        # 3-er signal
-        #a[i] = a[i] ^ 0b0100_0100_0100_0100_0100_0100_0100_0100
-        # 4-er signal
-        a[i] = a[i] ^ 0b0010_0010_0010_0010_0010_0010_0010_0010        
-        # invert 34-er signal
-        #a[i] = a[i] ^ 0b0001_0001_0001_0001_0001_0001_0001_0001
-        
-    return a
+        mem_slot_2[i] = 0b0000_0000_0000_0000_0000_0000_0000_0000
+    
+    for s in range(len(signal_1)):
+        #calculate j (junk), k (position)
+        i = s*4+1
+        j, k = int(i/32), i % 32
+        if signal_1[s] == "1":
+            mem_slot_2[j] = mem_slot_2[j] | 1<<31-k
+        else:
+            mem_slot_2[j] = mem_slot_2[j] #& ~(1<<31-k)
 
+    for s in range(len(signal_2)):
+        #calculate j (junk), k (position)
+        #i = ((s*4+n*4)+2) % 288
+        #bug 
+        i = ((s*4+n*4)+2)
+        if i>=288:
+            i = i-288
+        j, k = int(i/32), i % 32
+
+        if signal_2[s] == "1":
+            mem_slot_2[j] = mem_slot_2[j] | 1<<31-k
+        else:
+            mem_slot_2[j] = mem_slot_2[j] #& ~(1<<31-k)
+
+    for s in range(len(signal_3)):
+        #calculate j (junk), k (position)
+        #i = ((s*4+z*4)+3) % 288
+        i = ((s*4+z*4)+3)
+        if i>=288:
+            i = i-288
+        j, k = int(i/32), i % 32
+        if signal_3[s] == "1":
+            mem_slot_2[j] = mem_slot_2[j] | 1<<31-k
+        else:
+            mem_slot_2[j] = mem_slot_2[j] #& ~(1<<31-k)
+
+    for s in range(len(signal_4)):
+        #calculate j (junk), k (position)
+        i = s*4
+        j, k = int(i/32), i % 32
+        if signal_4[s] == "1":
+            mem_slot_2[j] = mem_slot_2[j] | 1<<31-k
+        else:
+            mem_slot_2[j] = mem_slot_2[j] #& ~(1<<31-k)
+
+    #for i in range(36):
+    #    mem_slot_2[i] = 0b1000_0100_1000_0100_1000_0100_1000_0100
 
 class MCP3008:
 
@@ -251,9 +324,43 @@ offset_z = 0
 
 t0 = ticks_ms()
 
-data = fill_array(offset_n, offset_z, True, True, True, True)
+#data = fill_array(offset_n, offset_z, True, True, True, True)
+#ar_p = array("I", [0])
+#ar_p[0] = addressof(data)
+
+#mem_slot_1
+#fill_mem_slot_1(0, 0)
+#ar_p = array("I", [0])
+#ar_p[0] = addressof(mem_slot_1)
+
+#mem_slot_2 = array("I", [0 for _ in range(4)])
+
+0b1000_0000_1000_0000_1000_0000_1000_0000
+0b1000_1000_1000_1000_1000_1000_1000_1000
+
+0b0000_0000_0000_0000_0000_0000_0000_0000
+0b1000_0000_1000_0000_1000_0000_1000_0000
+0b1000_0100_1000_0100_1000_0100_1000_0100
+
+#mem_slot_2[0] = 0b1000_0100_1000_0100_1000_0100_1000_0100
+#mem_slot_2[1] = 0b1000_0100_1000_0100_1000_0100_1000_0100
+#mem_slot_2[2] = 0b1000_0100_1000_0100_1000_0100_1000_0100
+#mem_slot_2[3] = 0b1000_0100_1000_0100_1000_0100_1000_0100
+
+#mem_slot_2[0] = 0b1000_1000_1000_1000_1000_1000_1000_1000
+#mem_slot_2[1] = 0b1000_1000_1000_1000_1000_1000_1000_1000
+#mem_slot_2[2] = 0b1000_1000_1000_1000_1000_1000_1000_1000
+#mem_slot_2[3] = 0b1000_1000_1000_1000_1000_1000_1000_1000
+
+# todo: bug -2 does not work
+#fill_mem_slot_2(289, -2)
+
+fill_mem_slot_2(4, 2)
+
+
 ar_p = array("I", [0])
-ar_p[0] = addressof(data)
+ar_p[0] = addressof(mem_slot_2)
+
 
 t1 = ticks_ms()
 print(ticks_diff(t1, t0))
@@ -285,8 +392,9 @@ sm = rp2.StateMachine(0, signal, freq=173_725, out_base=Pin(6))
 
 d0=CHANNELS[0]
 d0.CTRL_TRIG.EN = 0
+# attention: value has to be the array size 288/8 = 36
 d0.TRANS_COUNT = 36
-d0.READ_ADDR = addressof(data)
+d0.READ_ADDR = addressof(mem_slot_2)
 d0.WRITE_ADDR = PIO0_BASE_TXF0
 d0.CTRL_TRIG.INCR_WRITE = 0
 d0.CTRL_TRIG.INCR_READ = 1
@@ -312,6 +420,20 @@ d0.CTRL_TRIG.EN = 1
 # important: start sm after channel
 sm.active(1)
 
+sleep(1)
+print(1)
+sleep(1)
+print(2)
+sleep(1)
+print(3)
+sleep(1)
+print(4)
+sleep(1)
+print(5)
+sleep(4)
+print("leaving")
+exit(1)
+
 
 l=[0,0,0,0,0,0,0,0]
 
@@ -331,11 +453,12 @@ while True:
         print(m)
         
         offset_n, offset_z = l[0]//16, l[1]//16
-        data = fill_array(offset_n, offset_z, True, True, True, True)
-        ar_p = array("I", [0])
-        ar_p[0] = addressof(data)
-        d0.READ_ADDR = addressof(data)
-        d1.READ_ADDR = addressof(ar_p)
+        #data = fill_array(offset_n, offset_z, True, True, True, True)
+        #ar_p = array("I", [0])
+        #ar_p[0] = addressof(data)
+        #d0.READ_ADDR = addressof(data)
+        #d1.READ_ADDR = addressof(ar_p)
+        
         #if (m[0]>=32 and led.value()==0):
         #    led.on()
         #if (m[0]<32 and led.value()==1):
