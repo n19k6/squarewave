@@ -165,11 +165,16 @@ mem_slot_1 = array("I", [0 for _ in range(36)])
 mem_slot_2 = array("I", [0 for _ in range(36)])
 
 
-def bad_fill_mem_slot_1(n, z):
+
+def fill_mem_slot_1(n, z):
     global mem_slot_1
     #mem_slot_1[0] = 0b00001011
     #signal_1 = "1100111100001111"
     print("a")
+    
+    for i in range(36):
+        mem_slot_1[i] = 0b0000_0000_0000_0000_0000_0000_0000_0000
+    
     for s in range(len(signal_1)):
         #calculate j (junk), k (position)
         i = s*4+1
@@ -177,26 +182,33 @@ def bad_fill_mem_slot_1(n, z):
         if signal_1[s] == "1":
             mem_slot_1[j] = mem_slot_1[j] | 1<<31-k
         else:
-            mem_slot_1[j] = mem_slot_1[j] & ~(1<<31-k)
+            mem_slot_1[j] = mem_slot_1[j] #& ~(1<<31-k)
 
     for s in range(len(signal_2)):
         #calculate j (junk), k (position)
-        i = ((s*4+n*4)+2) % 288
+        #i = ((s*4+n*4)+2) % 288
+        #bug 
+        i = ((s*4+n*4)+2)
+        if i>=288:
+            i = i-288
         j, k = int(i/32), i % 32
 
-        if signal_1[s] == "1":
+        if signal_2[s] == "1":
             mem_slot_1[j] = mem_slot_1[j] | 1<<31-k
         else:
-            mem_slot_1[j] = mem_slot_1[j] & ~(1<<31-k)
+            mem_slot_1[j] = mem_slot_1[j] #& ~(1<<31-k)
 
     for s in range(len(signal_3)):
         #calculate j (junk), k (position)
-        i = ((s*4+z*4)+3) % 288
+        #i = ((s*4+z*4)+3) % 288
+        i = ((s*4+z*4)+3)
+        if i>=288:
+            i = i-288
         j, k = int(i/32), i % 32
-        if signal_1[s] == "1":
+        if signal_3[s] == "1":
             mem_slot_1[j] = mem_slot_1[j] | 1<<31-k
         else:
-            mem_slot_1[j] = mem_slot_1[j] & ~(1<<31-k)
+            mem_slot_1[j] = mem_slot_1[j] #& ~(1<<31-k)
 
     for s in range(len(signal_4)):
         #calculate j (junk), k (position)
@@ -204,10 +216,11 @@ def bad_fill_mem_slot_1(n, z):
         j, k = int(i/32), i % 32
         if signal_4[s] == "1":
             mem_slot_1[j] = mem_slot_1[j] | 1<<31-k
-            print("b")
         else:
-            mem_slot_1[j] = mem_slot_1[j] & ~(1<<31-k)
+            mem_slot_1[j] = mem_slot_1[j] #& ~(1<<31-k)
 
+    #for i in range(36):
+    #    mem_slot_1[i] = 0b1000_0100_1000_0100_1000_0100_1000_0100
 
 def fill_mem_slot_2(n, z):
     global mem_slot_2
@@ -355,7 +368,8 @@ t0 = ticks_ms()
 # todo: bug -2 does not work
 #fill_mem_slot_2(289, -2)
 
-fill_mem_slot_2(4, 2)
+#fill_mem_slot_2(4, 64) -> OK
+#fill_mem_slot_2(4, 78) -> IndexError: array index out of range
 
 
 ar_p = array("I", [0])
