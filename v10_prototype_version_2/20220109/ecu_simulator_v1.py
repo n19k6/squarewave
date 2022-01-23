@@ -51,10 +51,141 @@ from time import sleep, sleep_ms, ticks_ms, ticks_diff
 from array import array
 from sys import exit
 
-frequencies = array("I", [0 for _ in range(64)])
 
-for i in range(64):
-    frequencies[i] = int(140/64*i)
+
+clk_freq_list = [
+    "2 Hz",
+    "4 Hz",
+    "6 Hz",
+    "8 Hz",
+    "10 Hz",
+    "13 Hz",
+    "15 Hz",
+    "17 Hz",
+    "19 Hz",
+    "21 Hz",
+    "24 Hz",
+    "26 Hz",
+    "28 Hz",
+    "30 Hz",
+    "32 Hz",
+    "35 Hz",
+    "37 Hz",
+    "39 Hz",
+    "41 Hz",
+    "43 Hz",
+    "45 Hz",
+    "48 Hz",
+    "50 Hz",
+    "52 Hz",
+    "54 Hz",
+    "56 Hz",
+    "59 Hz",
+    "61 Hz",
+    "63 Hz",
+    "65 Hz",
+    "67 Hz",
+    "70 Hz",
+    "72 Hz",
+    "74 Hz",
+    "76 Hz",
+    "78 Hz",
+    "80 Hz",
+    "83 Hz",
+    "85 Hz",
+    "87 Hz",
+    "89 Hz",
+    "91 Hz",
+    "94 Hz",
+    "96 Hz",
+    "98 Hz",
+    "100 Hz",
+    "102 Hz",
+    "105 Hz",
+    "107 Hz",
+    "109 Hz",
+    "111 Hz",
+    "113 Hz",
+    "115 Hz",
+    "118 Hz",
+    "120 Hz",
+    "122 Hz",
+    "124 Hz",
+    "126 Hz",
+    "129 Hz",
+    "131 Hz",
+    "133 Hz",
+    "135 Hz",
+    "137 Hz",
+    "140 Hz"
+]
+
+clk_div_list = array("I", [0 for _ in range(64)])
+
+clk_div_list[0] = -0b101100000100101000100000000000
+clk_div_list[1] = 0b1101001111101101011110000000000
+clk_div_list[2] = 0b1000110101001000111110100000000
+clk_div_list[3] = 0b110100111110110101111000000000
+clk_div_list[4] = 0b101010011000101011000100000000
+clk_div_list[5] = 0b100000100110101011000000000000
+clk_div_list[6] = 0b11100010000011100101100000000
+clk_div_list[7] = 0b11000111011101100001000000000
+clk_div_list[8] = 0b10110010011101110010000000000
+clk_div_list[9] = 0b10100001011101111111100000000
+clk_div_list[10] = 0b10001101010010001111100000000
+clk_div_list[11] = 0b10000010011010101100000000000
+clk_div_list[12] = 0b1111001000110011111100000000
+clk_div_list[13] = 0b1110001000001110010100000000
+clk_div_list[14] = 0b1101001111101101011100000000
+clk_div_list[15] = 0b1100000111000011001000000000
+clk_div_list[16] = 0b1011011101001001111000000000
+clk_div_list[17] = 0b1010110111100011101000000000
+clk_div_list[18] = 0b1010010101101000001000000000
+clk_div_list[19] = 0b1001110110110110101000000000
+clk_div_list[20] = 0b1001011010110100001100000000
+clk_div_list[21] = 0b1000110101001000010100000000
+clk_div_list[22] = 0b1000011110100001100100000000
+clk_div_list[23] = 0b1000001001101010001100000000
+clk_div_list[24] = 0b111110110010101101100000000
+clk_div_list[25] = 0b111100100011001100000000000
+clk_div_list[26] = 0b111001011110001001000000000
+clk_div_list[27] = 0b110111100101100011000000000
+clk_div_list[28] = 0b110101110100100111100000000
+clk_div_list[29] = 0b110100001010101000000000000
+clk_div_list[30] = 0b110010100110111110000000000
+clk_div_list[31] = 0b110000011100001010000000000
+clk_div_list[32] = 0b101111000110000010100000000
+clk_div_list[33] = 0b101101110100100101000000000
+clk_div_list[34] = 0b101100100111011010000000000
+clk_div_list[35] = 0b101011011110001100100000000
+clk_div_list[36] = 0b101010011000101001000000000
+clk_div_list[37] = 0b101000110110100110000000000
+clk_div_list[38] = 0b100111111001000101000000000
+clk_div_list[39] = 0b100110111110011000100000000
+clk_div_list[40] = 0b100110000110010101000000000
+clk_div_list[41] = 0b100101010000101111100000000
+clk_div_list[42] = 0b100100000100100111000000000
+clk_div_list[43] = 0b100011010100100001000000000
+clk_div_list[44] = 0b100010100110011000100000000
+clk_div_list[45] = 0b100001111010000110000000000
+clk_div_list[46] = 0b100001001111100011000000000
+clk_div_list[47] = 0b100000010010110000100000000
+clk_div_list[48] = 0b11111101100001000100000000
+clk_div_list[49] = 0b11111000110111010100000000
+clk_div_list[50] = 0b11110100011000011000000000
+clk_div_list[51] = 0b11110000000011100100000000
+clk_div_list[52] = 0b11101011111000011000000000
+clk_div_list[53] = 0b11100101111000100100000000
+clk_div_list[54] = 0b11100010000011011000000000
+clk_div_list[55] = 0b11011110010110001100000000
+clk_div_list[56] = 0b11011010110000101100000000
+clk_div_list[57] = 0b11010111010010011100000000
+clk_div_list[58] = 0b11010010010010000000000000
+clk_div_list[59] = 0b11001111000100100100000000
+clk_div_list[60] = 0b11001011111101010000000000
+clk_div_list[61] = 0b11001000111011111000000000
+clk_div_list[62] = 0b11000110000000001000000000
+clk_div_list[63] = 0b11000001110000100100000000
 
 PIN_SPI_ONE_SCK=2
 PIN_SPI_ONE_MOSI=3
@@ -410,15 +541,19 @@ while True:
         print(i, end=" ")
         i = i+1
         print(m, end=" ")
+        
         if (actual_poti[2]//16 != last_poti[2]//16):
-            freq = frequencies[actual_poti[2]//16]    
-            print("=> "+str([actual_poti[2]//16, str(freq)+" Hz"]), end=" ")
+            #freq = frequencies[actual_poti[2]//16]    
+            print("=> "+str([actual_poti[2]//16, clk_freq_list[actual_poti[2]//16]]), end=" ")
             #todo: register ueberschreiben fuer frequenz
+            SM0_CLKDIV = 0x50200000 + 0x0c8
+            mem32[SM0_CLKDIV] = clk_div_list[actual_poti[2]//16]
             
         if (actual_poti[0]//16 != last_poti[0]//16 or actual_poti[1]//16 != last_poti[1]//16):
             offset_n, offset_z = actual_poti[0]//16-32, actual_poti[1]//16-32    
             print("=> "+str([offset_n, offset_z]), end=" ")
             fill_mem_slot(offset_n, offset_z)
+            
         print("")
         
         last_poti = actual_poti
