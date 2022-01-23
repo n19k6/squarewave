@@ -322,7 +322,7 @@ def signal():
     wrap_target()
     #out(x, 1)
     #out(pins, 3)
-    out(pins, 4) [8]
+    out(pins, 4) [7]
     wrap()
 
 #sm = rp2.StateMachine(0, signal, freq=3_000, out_base=Pin(6))
