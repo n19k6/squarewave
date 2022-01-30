@@ -187,10 +187,17 @@ clk_div_list[61] = 0b11001000111011111000000000
 clk_div_list[62] = 0b11000110000000001000000000
 clk_div_list[63] = 0b11000001110000100100000000
 
+
+clk_freq_list_2 = clk_freq_list
+clk_div_list_2 = clk_div_list
+
 PIN_SPI_ONE_SCK=2
 PIN_SPI_ONE_MOSI=3
 PIN_SPI_ONE_MISO=4
 PIN_SPI_ONE_CS=5
+
+PIN_OX1=16
+PIN_OX2=17
 
 signal_1a = "1100"*34+"0000"+"0000"
 signal_2a = "1100"+"0000"*17+"1100"+"0000"*17
@@ -417,6 +424,59 @@ class MCP3008:
         self.cs.value(1) # turn off
         return ((self._in_buf[1] & 0x03) << 8) | self._in_buf[2]
 
+@rp2.asm_pio(sideset_init=rp2.PIO.OUT_LOW)
+def pwm_prog():
+    #pull(noblock) .side(0)
+    pull(noblock)
+    mov(x, osr) # Keep most recent pull data stashed in X, for recycling by noblock
+    mov(y, isr) # ISR must be preloaded with PWM count max
+    jmp(not_x, "continue")
+    #jmp("continue")
+    #label("null")
+    nop().side(0)
+    label("continue")
+    label("pwmloop")
+    jmp(x_not_y, "skip")
+    nop()         .side(1)
+    label("skip")
+    jmp(y_dec, "pwmloop")
+    
+class PIOPWM:
+    def __init__(self, sm_id, pin, count_freq, max_count=(1 << 16) - 1):
+        #print(pin)
+        self._sm = rp2.StateMachine(sm_id, pwm_prog, freq=2 * count_freq, sideset_base=Pin(pin))
+        # Use exec() to load max count into ISR
+        self._sm.put(max_count)
+        self._sm.exec("pull()")
+        self._sm.exec("mov(isr, osr)")
+        self._sm.active(1)
+        self._max_count = max_count
+        self._pin = pin
+
+    def _set(self, value):
+        # Minimum value is -1 (completely turn off), 0 actually still produces narrow pulse
+        if value>self._max_count:
+            self._sm.active(0)
+            #print("off: ", value)
+            Pin(self._pin, Pin.OUT).value(1)
+        else:
+            if not(self._sm.active()):
+                self._sm.put(self._max_count)
+                self._sm.exec("pull()")
+                self._sm.exec("mov(isr, osr)")
+                self._sm.active(1)
+                #print("on: ", value)
+            value = max(value, -1)
+            value = min(value, self._max_count)
+            self._sm.put(value)
+        
+    def set(self, value):
+        # Minimum value is -1 (completely turn off), 0 actually still produces narrow pulse
+        value = max(value, -1)
+        value = min(value, self._max_count)
+        #print(value)
+        self._sm.put(value)
+
 spi = SPI(0, sck=Pin(PIN_SPI_ONE_SCK), mosi=Pin(PIN_SPI_ONE_MOSI), miso=Pin(PIN_SPI_ONE_MISO), baudrate=10000)
 cs = Pin(PIN_SPI_ONE_CS, Pin.OUT)
 cs.value(1) # disable chip at start
@@ -459,7 +519,13 @@ def signal():
 #sm = rp2.StateMachine(0, signal, freq=3_000, out_base=Pin(6))
 sm = rp2.StateMachine(0, signal, freq=173_725, out_base=Pin(6))
 
+pwm1 = PIOPWM(1, 16, 10_000, 10000)
+pwm2 = PIOPWM(2, 17, 10_000, 10000)
 
+#pwm1._set(11000)
+#pwm2._set(-1)
+pwm1._set(1000)
+pwm2._set(2000)
 
 
 #d0=CHANNELS[0]
@@ -554,7 +620,41 @@ while True:
             print("=> "+str([offset_n, offset_z]), end=" ")
             fill_mem_slot(offset_n, offset_z)
             
+        if (actual_poti[4]//16 != last_poti[4]//16):
+            duty_ox1 = (actual_poti[4]-2)*10 # [0-1023] -> [-2-1021]
+            duty_ox1 = min(11000, duty_ox1)
+            duty_ox1 = max(-1, duty_ox1)
+            print("=> "+str(["duty_ox1", duty_ox1]), end=" ")
+            pwm1._set(duty_ox1)
+            #fill_mem_slot(offset_n, offset_z)
+
+        if (actual_poti[5]//16 != last_poti[5]//16):
+            #freq = frequencies[actual_poti[2]//16]    
+            print("=> "+str(["freq_ox1", actual_poti[5]//16, clk_freq_list_2[actual_poti[5]//16]]), end=" ")
+            #todo: register ueberschreiben fuer frequenz
+            SM1_CLKDIV = 0x50200000 + 0x0e0
+            # page 399, rp2040-datasheet.pdf
+            #0x0c8, 0x0e0, 0x0f8, 0x110
+            mem32[SM1_CLKDIV] = clk_div_list_2[actual_poti[5]//16]
+            
+        if (actual_poti[6]//16 != last_poti[6]//16):
+            duty_ox2 = (actual_poti[6]-2)*10 # [0-1023] -> [-2-1021]
+            duty_ox2 = min(11000, duty_ox2)
+            duty_ox2 = max(-1, duty_ox2)
+            print("=> "+str(["duty_ox2", duty_ox2]), end=" ")
+            pwm2._set(duty_ox2)           
+            
+        if (actual_poti[7]//16 != last_poti[7]//16):
+            #freq = frequencies[actual_poti[2]//16]    
+            print("=> "+str(["freq_ox2", actual_poti[7]//16, clk_freq_list_2[actual_poti[7]//16]]), end=" ")
+            #todo: register ueberschreiben fuer frequenz
+            SM2_CLKDIV = 0x50200000 + 0x0f8
+            # page 399, rp2040-datasheet.pdf
+            #0x0c8, 0x0e0, 0x0f8, 0x110
+            mem32[SM2_CLKDIV] = clk_div_list_2[actual_poti[7]//16]
+            
         print("")
+        
         
         last_poti = actual_poti
         
