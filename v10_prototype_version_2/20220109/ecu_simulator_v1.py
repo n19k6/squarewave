@@ -10,18 +10,18 @@
 #     | [06] GP4 SPI0_RX                                                    ADC_VREF [35] |
 #     | [07] GP5 SPI0_CS                                                        GP28 [34] |
 #     | [08] GND                                                                 GND [33] |
-#     | [09] GP6                                                                GP27 [32] |
-#     | [10] GP7                                                                GP26 [31] |
-#     | [11] GP8                                                                 RUN [30] |
-#     | [12] GP9                                                                GP22 [29] |
+#     | [09] GP6 CRANKSHAFT 34-2                                                GP27 [32] |
+#     | [10] GP7 IGF 4                                                          GP26 [31] |
+#     | [11] GP8 CAMSHAFT 3-1                                                    RUN [30] |
+#     | [12] GP9 DEBUG                                                          GP22 [29] |
 #     | [13] GND                                                                 GND [28] |
 #     | [14] GP10                                                               GP21 [26] |
 #     | [15] GP11                                                               GP20 [26] |
 #     | [16] GP12                                                               GP19 [25] |
 #     | [17] GP13                                                               GP18 [24] |
 #     | [18] GND                                                                 GND [23] |
-#     | [19] GP14                                                               GP17 [22] |
-#     | [20] GP15                                                               GP16 [21] |
+#     | [19] GP14 OX1                                                           GP17 [22] |
+#     | [20] GP15 OX2                                                           GP16 [21] |
 #     +--------------------------------------|--|--|--------------------------------------+
 #                                            |  |  |
 #                                            S  G  S
@@ -323,19 +323,19 @@ def fill_mem_slot_1(n, z, p1=True, p2=True, p3=True, p4=True):
     signal_3_shifted = helper.shift(signal_3_suppressed, z)
     
     for s in range(len(signal_1)):   
-        i = s*4+1
+        i = s*4+3 
         j, k = int(i/32), i % 32 #calculate j (junk), k (position)
         if signal_1[s] == "1":
             mem_slot_1[j] = mem_slot_1[j] | 1<<31-k
             
     for s in range(len(signal_2_shifted)):   
-        i = s*4+2
+        i = s*4+1
         j, k = int(i/32), i % 32 #calculate j (junk), k (position)
         if signal_2_shifted[s] == "1":
             mem_slot_1[j] = mem_slot_1[j] | 1<<31-k
             
     for s in range(len(signal_3_shifted)):   
-        i = s*4+3
+        i = s*4+2
         j, k = int(i/32), i % 32 #calculate j (junk), k (position)
         if signal_3_shifted[s] == "1":
             mem_slot_1[j] = mem_slot_1[j] | 1<<31-k
@@ -357,19 +357,19 @@ def fill_mem_slot_2(n, z, p1=True, p2=True, p3=True, p4=True):
     signal_3_shifted = helper.shift(signal_3_suppressed, z)
     
     for s in range(len(signal_1)):   
-        i = s*4+1
+        i = s*4+3
         j, k = int(i/32), i % 32 #calculate j (junk), k (position)
         if signal_1[s] == "1":
             mem_slot_2[j] = mem_slot_2[j] | 1<<31-k
             
     for s in range(len(signal_2_shifted)):   
-        i = s*4+2
+        i = s*4+1
         j, k = int(i/32), i % 32 #calculate j (junk), k (position)
         if signal_2_shifted[s] == "1":
             mem_slot_2[j] = mem_slot_2[j] | 1<<31-k
             
     for s in range(len(signal_3_shifted)):   
-        i = s*4+3
+        i = s*4+2
         j, k = int(i/32), i % 32 #calculate j (junk), k (position)
         if signal_3_shifted[s] == "1":
             mem_slot_2[j] = mem_slot_2[j] | 1<<31-k
@@ -501,7 +501,7 @@ print(ticks_diff(t1, t0))
 
 
 @rp2.asm_pio(
-    # zuendung, nockewelle, kurbelwelle, debug
+    # GP6, GP7, GP8, GP9 = kurbelwelle, zuendung, nockewelle, debug
     out_init=(rp2.PIO.OUT_LOW, rp2.PIO.OUT_LOW, rp2.PIO.OUT_LOW, rp2.PIO.OUT_LOW),
     #out_init=(rp2.PIO.OUT_HIGH, rp2.PIO.OUT_LOW, rp2.PIO.OUT_LOW),
     #out_init=(rp2.PIO.OUT_LOW),
@@ -519,8 +519,8 @@ def signal():
 #sm = rp2.StateMachine(0, signal, freq=3_000, out_base=Pin(6))
 sm = rp2.StateMachine(0, signal, freq=173_725, out_base=Pin(6))
 
-pwm1 = PIOPWM(1, 16, 10_000, 10000)
-pwm2 = PIOPWM(2, 17, 10_000, 10000)
+pwm1 = PIOPWM(1, 14, 10_000, 10000)
+pwm2 = PIOPWM(2, 15, 10_000, 10000)
 
 #pwm1._set(11000)
 #pwm2._set(-1)
@@ -579,7 +579,9 @@ last_gpio = [0, 0, 0, 0]
 
 i = 0
 while True:
-    actual_poti = [chip.read(7), chip.read(6), chip.read(5), chip.read(4), chip.read(8), chip.read(1), chip.read(2), chip.read(3)]
+    # rpm, offset_igf, offset_cs, lambda1_freq, lambda1_duty, lambda2_freq, lambda2_duty
+    actual_poti = [chip.read(8), chip.read(2), chip.read(1), chip.read(3), chip.read(4), chip.read(5), chip.read(6), chip.read(7)]
+    #print(actual_poti)
     difference_poti = max(
         abs(last_poti[0]-actual_poti[0]),
         abs(last_poti[1]-actual_poti[1]),
@@ -608,15 +610,15 @@ while True:
         i = i+1
         print(m, end=" ")
         
-        if (actual_poti[2]//16 != last_poti[2]//16):
+        if (actual_poti[0]//16 != last_poti[0]//16):
             #freq = frequencies[actual_poti[2]//16]    
-            print("=> "+str([actual_poti[2]//16, clk_freq_list[actual_poti[2]//16]]), end=" ")
+            print("=> "+str([actual_poti[0]//16, clk_freq_list[actual_poti[2]//16]]), end=" ")
             #todo: register ueberschreiben fuer frequenz
             SM0_CLKDIV = 0x50200000 + 0x0c8
-            mem32[SM0_CLKDIV] = clk_div_list[actual_poti[2]//16]
+            mem32[SM0_CLKDIV] = clk_div_list[actual_poti[0]//16]
             
-        if (actual_poti[0]//16 != last_poti[0]//16 or actual_poti[1]//16 != last_poti[1]//16):
-            offset_n, offset_z = actual_poti[0]//16-32, actual_poti[1]//16-32    
+        if (actual_poti[1]//16 != last_poti[1]//16 or actual_poti[2]//16 != last_poti[2]//16):
+            offset_n, offset_z = actual_poti[2]//16-32, actual_poti[1]//16-32    
             print("=> "+str([offset_n, offset_z]), end=" ")
             fill_mem_slot(offset_n, offset_z)
             
@@ -628,14 +630,14 @@ while True:
             pwm1._set(duty_ox1)
             #fill_mem_slot(offset_n, offset_z)
 
-        if (actual_poti[5]//16 != last_poti[5]//16):
+        if (actual_poti[3]//16 != last_poti[3]//16):
             #freq = frequencies[actual_poti[2]//16]    
-            print("=> "+str(["freq_ox1", actual_poti[5]//16, clk_freq_list_2[actual_poti[5]//16]]), end=" ")
+            print("=> "+str(["freq_ox1", actual_poti[3]//16, clk_freq_list_2[actual_poti[3]//16]]), end=" ")
             #todo: register ueberschreiben fuer frequenz
             SM1_CLKDIV = 0x50200000 + 0x0e0
             # page 399, rp2040-datasheet.pdf
             #0x0c8, 0x0e0, 0x0f8, 0x110
-            mem32[SM1_CLKDIV] = clk_div_list_2[actual_poti[5]//16]
+            mem32[SM1_CLKDIV] = clk_div_list_2[actual_poti[3]//16]
             
         if (actual_poti[6]//16 != last_poti[6]//16):
             duty_ox2 = (actual_poti[6]-2)*10 # [0-1023] -> [-2-1021]
@@ -644,14 +646,14 @@ while True:
             print("=> "+str(["duty_ox2", duty_ox2]), end=" ")
             pwm2._set(duty_ox2)           
             
-        if (actual_poti[7]//16 != last_poti[7]//16):
+        if (actual_poti[5]//16 != last_poti[5]//16):
             #freq = frequencies[actual_poti[2]//16]    
-            print("=> "+str(["freq_ox2", actual_poti[7]//16, clk_freq_list_2[actual_poti[7]//16]]), end=" ")
+            print("=> "+str(["freq_ox2", actual_poti[5]//16, clk_freq_list_2[actual_poti[5]//16]]), end=" ")
             #todo: register ueberschreiben fuer frequenz
             SM2_CLKDIV = 0x50200000 + 0x0f8
             # page 399, rp2040-datasheet.pdf
             #0x0c8, 0x0e0, 0x0f8, 0x110
-            mem32[SM2_CLKDIV] = clk_div_list_2[actual_poti[7]//16]
+            mem32[SM2_CLKDIV] = clk_div_list_2[actual_poti[5]//16]
             
         print("")
         
