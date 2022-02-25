@@ -199,14 +199,21 @@ PIN_SPI_ONE_CS=5
 PIN_OX1=16
 PIN_OX2=17
 
+PIN_IGF_1 = 19
+PIN_IGF_2 = 20
+PIN_IGF_3 = 21
+PIN_IGF_4 = 22
+
 signal_1a = "1100"*34+"0000"+"0000"
-signal_2a = "1100"+"0000"*17+"1100"+"0000"*17
+#signal_2a = "1100"+"0000"*17+"1100"+"0000"*17
+signal_2a = "0011"+"1111"*17+"0011"+"1111"*17
 signal_3a = "1000"+"0000"*17+"1000"+"0000"*17
 signal_4a = "100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
 
 
 signal_1b = "1100"*34+"0000"+"0000"
-signal_2b = "1100"+"0000"*17+"0000"+"0000"*17
+#signal_2b = "1100"+"0000"*17+"0000"+"0000"*17
+signal_2b = "0011"+"1111"*17+"1111"+"1111"*17
 signal_3b = "1000"+"0000"*17+"1000"+"0000"*17
 signal_4b = "100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
 
@@ -481,6 +488,12 @@ spi = SPI(0, sck=Pin(PIN_SPI_ONE_SCK), mosi=Pin(PIN_SPI_ONE_MOSI), miso=Pin(PIN_
 cs = Pin(PIN_SPI_ONE_CS, Pin.OUT)
 cs.value(1) # disable chip at start
 
+igf_1 = Pin(PIN_IGF_1, Pin.IN)
+igf_2 = Pin(PIN_IGF_2, Pin.IN)
+igf_3 = Pin(PIN_IGF_3, Pin.IN)
+igf_4 = Pin(PIN_IGF_4, Pin.IN)
+
+
 
 chip = MCP3008(spi, cs)
 
@@ -575,12 +588,15 @@ sm.active(1)
 
 
 last_poti = [0, 0, 0, 0, 0, 0, 0, 0]
-last_gpio = [0, 0, 0, 0]
+last_gpio = [1, 1, 1, 1]
 
 i = 0
 while True:
     # rpm, offset_igf, offset_cs, lambda1_freq, lambda1_duty, lambda2_freq, lambda2_duty
     actual_poti = [chip.read(8), chip.read(2), chip.read(1), chip.read(3), chip.read(4), chip.read(5), chip.read(6), chip.read(7)]
+    # hack
+    actual_gpio = [igf_1.value(), igf_2.value(), igf_3.value(), igf_4.value()]
+    #print(actual_gpio,"-", last_gpio)
     #print(actual_poti)
     difference_poti = max(
         abs(last_poti[0]-actual_poti[0]),
@@ -592,7 +608,7 @@ while True:
         abs(last_poti[6]-actual_poti[6]),
         abs(last_poti[7]-actual_poti[7]))
     
-    if (difference_poti>20): 
+    if (difference_poti>20 or actual_gpio != last_gpio): 
         #print(d)
         #m=[l[0]//16,l[1]//16,l[2]//16,l[3]//16,l[4]//16,l[5]//16,l[6]//16,l[7]//16]
         #m=[l[0]//16,l[1]//16]
@@ -616,11 +632,11 @@ while True:
             #todo: register ueberschreiben fuer frequenz
             SM0_CLKDIV = 0x50200000 + 0x0c8
             mem32[SM0_CLKDIV] = clk_div_list[actual_poti[0]//16]
-            
-        if (actual_poti[1]//16 != last_poti[1]//16 or actual_poti[2]//16 != last_poti[2]//16):
-            offset_n, offset_z = actual_poti[2]//16-32, actual_poti[1]//16-32    
+        
+        if (actual_poti[1]//16 != last_poti[1]//16 or actual_poti[2]//16 != last_poti[2]//16 or actual_gpio != last_gpio):
+            offset_n, offset_z = actual_poti[2]//16-32, actual_poti[1]//16-32
             print("=> "+str([offset_n, offset_z]), end=" ")
-            fill_mem_slot(offset_n, offset_z)
+            fill_mem_slot(offset_n, offset_z, actual_gpio[0], actual_gpio[1], actual_gpio[2], actual_gpio[3])
             
         if (actual_poti[4]//16 != last_poti[4]//16):
             duty_ox1 = (actual_poti[4]-2)*10 # [0-1023] -> [-2-1021]
@@ -657,7 +673,12 @@ while True:
             
         print("")
         
-        
+        #print(actual_gpio, actual_gpio != last_gpio)
+        #print("A", actual_gpio)
+        #last_gpio = actual_gpio
+        #print("B", last_gpio)
         last_poti = actual_poti
-        
+    
+    last_gpio = actual_gpio
+    
     sleep(0.1)
