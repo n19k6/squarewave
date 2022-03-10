@@ -18,10 +18,10 @@
 #     | [14] GP10                                                               GP21 [26] |
 #     | [15] GP11                                                               GP20 [26] |
 #     | [16] GP12                                                               GP19 [25] |
-#     | [17] GP13                                                               GP18 [24] |
+#     | [17] GP13                                                  CODE         GP18 [24] |
 #     | [18] GND                                                                 GND [23] |
-#     | [19] GP14 OX1                                                           GP17 [22] |
-#     | [20] GP15 OX2                                                           GP16 [21] |
+#     | [19] GP14 OX1                                              RXCK_CLK     GP17 [22] |
+#     | [20] GP15 OX2                                              TXCT_TRIGGER GP16 [21] |
 #     +--------------------------------------|--|--|--------------------------------------+
 #                                            |  |  |
 #                                            S  G  S
@@ -50,6 +50,61 @@ from machine import Pin, SPI, mem32
 from time import sleep, sleep_ms, ticks_ms, ticks_diff
 from array import array
 from sys import exit
+
+# hack begin
+
+Pin(18, Pin.OUT).value(1)
+Pin(19, Pin.OUT).value(1)
+
+
+@rp2.asm_pio(
+    sideset_init=rp2.PIO.OUT_HIGH,
+    out_init=rp2.PIO.OUT_HIGH,
+    set_init=rp2.PIO.OUT_HIGH,
+    out_shiftdir=rp2.PIO.SHIFT_RIGHT,
+    autopull=True,
+    #pull_thresh=32,
+    #pull_thresh=4,
+    #fifo_join=rp2.PIO.JOIN_TX
+)
+def send_data():
+    #wrap_target()
+    #out(pins, 1)
+    label("start")
+    out(x, 1)
+    #nop().side(0)
+    jmp(x, "a").side(0) [1]
+    nop()
+    set(pins, 1) [2]
+    nop().side(1) [3]
+    jmp("start")
+    #wrap()
+    label("a")
+    nop()
+    set(pins, 0) [2]
+    nop().side(1)  [3]  
+    jmp("start")
+    #wrap()
+
+
+sm4 = rp2.StateMachine(4, send_data, freq=100_000, sideset_base=Pin(17), out_base=Pin(18), set_base=Pin(18))
+
+def put_data2(x):
+    print("uuuu");
+    sm4.put(0b10000000011111100000000000000000);
+    sm4.put(0b00000000000001010000000000010110);
+    sm4.put(0b10110010000000000000000000000000);
+    sm4.put(0b00000000000000000111111000000000);
+
+p2 = Pin(16, Pin.IN, Pin.PULL_UP)
+p2.irq(put_data2, Pin.IRQ_FALLING)
+
+
+#print(sm.tx_fifo())
+sm4.active(1)
+
+# hack end
+
 
 
 
