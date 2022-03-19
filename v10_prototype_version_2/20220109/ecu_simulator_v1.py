@@ -45,6 +45,8 @@
 
 
 import helper
+import config
+
 from uctypes import BF_POS, BF_LEN, BFUINT32, UINT32, struct, addressof
 from machine import Pin, SPI, mem32
 from time import sleep, sleep_ms, ticks_ms, ticks_diff
@@ -90,7 +92,7 @@ def send_data():
 sm4 = rp2.StateMachine(4, send_data, freq=100_000, sideset_base=Pin(17), out_base=Pin(18), set_base=Pin(18))
 
 def put_data2(x):
-    print("uuuu");
+    #print("uuuu");
     sm4.put(0b10000000011111100000000000000000);
     sm4.put(0b00000000000001010000000000010110);
     sm4.put(0b10110010000000000000000000000000);
@@ -108,143 +110,151 @@ sm4.active(1)
 
 
 
-clk_freq_list = [
-    "2 Hz",
-    "4 Hz",
-    "6 Hz",
-    "8 Hz",
-    "10 Hz",
-    "13 Hz",
-    "15 Hz",
-    "17 Hz",
-    "19 Hz",
-    "21 Hz",
-    "24 Hz",
-    "26 Hz",
-    "28 Hz",
-    "30 Hz",
-    "32 Hz",
-    "35 Hz",
-    "37 Hz",
-    "39 Hz",
-    "41 Hz",
-    "43 Hz",
-    "45 Hz",
-    "48 Hz",
-    "50 Hz",
-    "52 Hz",
-    "54 Hz",
-    "56 Hz",
-    "59 Hz",
-    "61 Hz",
-    "63 Hz",
-    "65 Hz",
-    "67 Hz",
-    "70 Hz",
-    "72 Hz",
-    "74 Hz",
-    "76 Hz",
-    "78 Hz",
-    "80 Hz",
-    "83 Hz",
-    "85 Hz",
-    "87 Hz",
-    "89 Hz",
-    "91 Hz",
-    "94 Hz",
-    "96 Hz",
-    "98 Hz",
-    "100 Hz",
-    "102 Hz",
-    "105 Hz",
-    "107 Hz",
-    "109 Hz",
-    "111 Hz",
-    "113 Hz",
-    "115 Hz",
-    "118 Hz",
-    "120 Hz",
-    "122 Hz",
-    "124 Hz",
-    "126 Hz",
-    "129 Hz",
-    "131 Hz",
-    "133 Hz",
-    "135 Hz",
-    "137 Hz",
-    "140 Hz"
-]
+# 
+# 
+# 
+# clk_div_list = array("I", [0 for _ in range(64)])
+# 
+# clk_freq_list = [
+#     "2.5 Hz",
+#     "2.5 Hz",
+#     "2.5 Hz",
+#     "4.166 Hz",
+#     "5 Hz",
+#     "6.666 Hz",
+#     "7.5 Hz",
+#     "8.202844 Hz",
+#     "8.333 Hz",
+#     "9.166 Hz",
+#     "10 Hz",
+#     "12 Hz",
+#     "14 Hz",
+#     "15.6875 Hz",
+#     "16 Hz",
+#     "18 Hz",
+#     "20 Hz",
+#     "22 Hz",
+#     "24 Hz",
+#     "26 Hz",
+#     "27.6875 Hz",
+#     "28 Hz",
+#     "30 Hz",
+#     "32 Hz",
+#     "34 Hz",
+#     "36 Hz",
+#     "37.6875 Hz",
+#     "38 Hz",
+#     "40 Hz",
+#     "42 Hz",
+#     "44 Hz",
+#     "46 Hz",
+#     "48 Hz",
+#     "49.6875 Hz",
+#     "50 Hz",
+#     "52 Hz",
+#     "54 Hz",
+#     "56 Hz",
+#     "58 Hz",
+#     "59.6875 Hz",
+#     "60 Hz",
+#     "62 Hz",
+#     "64 Hz",
+#     "66 Hz",
+#     "68 Hz",
+#     "69.6875 Hz",
+#     "70 Hz",
+#     "72 Hz",
+#     "74 Hz",
+#     "76 Hz",
+#     "78 Hz",
+#     "80 Hz",
+#     "81.6875 Hz",
+#     "82 Hz",
+#     "84 Hz",
+#     "86 Hz",
+#     "88 Hz",
+#     "90 Hz",
+#     "91.6875 Hz",
+#     "92 Hz",
+#     "94 Hz",
+#     "96 Hz",
+#     "98 Hz",
+#     "100 Hz"
+# ]
+# 
+# clk_div_list = array("I", [0 for _ in range(64)])
+# 
+# clk_div_list[0] = -0b1010110011101010011100100000000
+# clk_div_list[1] = -0b1010110011101010011100100000000
+# clk_div_list[2] = -0b1010110011101010011100100000000
+# clk_div_list[3] = 0b1100101101111110001011100000000
+# clk_div_list[4] = 0b1010100110001010110001100000000
+# clk_div_list[5] = 0b111111100101100010100100000000
+# clk_div_list[6] = 0b111000100000111001011100000000
+# clk_div_list[7] = 0b110011101011001110100100000000
+# clk_div_list[8] = 0b110010110111100011000000000000
+# clk_div_list[9] = 0b101110001111100011111000000000
+# clk_div_list[10] = 0b101010011000101011000100000000
+# clk_div_list[11] = 0b100011010100100011111000000000
+# clk_div_list[12] = 0b11110010001100111111000000000
+# clk_div_list[13] = 0b11011000001001100011000000000
+# clk_div_list[14] = 0b11010011111011010111100000000
+# clk_div_list[15] = 0b10111100011000010100100000000
+# clk_div_list[16] = 0b10101001100010101100000000000
+# clk_div_list[17] = 0b10011010001000010001000000000
+# clk_div_list[18] = 0b10001101010010001111100000000
+# clk_div_list[19] = 0b10000010011010101100000000000
+# clk_div_list[20] = 0b1111010011101111110000000000
+# clk_div_list[21] = 0b1111001000110011111100000000
+# clk_div_list[22] = 0b1110001000001110010100000000
+# clk_div_list[23] = 0b1101001111101101011100000000
+# clk_div_list[24] = 0b1100011101110110000100000000
+# clk_div_list[25] = 0b1011110001100001010000000000
+# clk_div_list[26] = 0b1011001111110001111100000000
+# clk_div_list[27] = 0b1011001001110111001000000000
+# clk_div_list[28] = 0b1010100110001010110000000000
+# clk_div_list[29] = 0b1010000101110111111100000000
+# clk_div_list[30] = 0b1001101000100001000100000000
+# clk_div_list[31] = 0b1001001101101101100000000000
+# clk_div_list[32] = 0b1000110101001000010100000000
+# clk_div_list[33] = 0b1000100001111011111100000000
+# clk_div_list[34] = 0b1000011110100001100100000000
+# clk_div_list[35] = 0b1000001001101010001100000000
+# clk_div_list[36] = 0b111110110010101101100000000
+# clk_div_list[37] = 0b111100100011001100000000000
+# clk_div_list[38] = 0b111010011101100100000000000
+# clk_div_list[39] = 0b111000110011110010000000000
+# clk_div_list[40] = 0b111000100000110110000000000
+# clk_div_list[41] = 0b110110101100001011000000000
+# clk_div_list[42] = 0b110100111110110010100000000
+# clk_div_list[43] = 0b110011011000000010100000000
+# clk_div_list[44] = 0b110001110111010101100000000
+# clk_div_list[45] = 0b110000101010000011100000000
+# clk_div_list[46] = 0b110000011100001010000000000
+# clk_div_list[47] = 0b101111000110000010100000000
+# clk_div_list[48] = 0b101101110100100101000000000
+# clk_div_list[49] = 0b101100100111011010000000000
+# clk_div_list[50] = 0b101011011110001100100000000
+# clk_div_list[51] = 0b101010011000101001000000000
+# clk_div_list[52] = 0b101001100000100110100000000
+# clk_div_list[53] = 0b101001010110011110100000000
+# clk_div_list[54] = 0b101000010111011110000000000
+# clk_div_list[55] = 0b100111011011011001000000000
+# clk_div_list[56] = 0b100110100010000010100000000
+# clk_div_list[57] = 0b100101101011001111000000000
+# clk_div_list[58] = 0b100100111110110111000000000
+# clk_div_list[59] = 0b100100110110110100100000000
+# clk_div_list[60] = 0b100100000100100111000000000
+# clk_div_list[61] = 0b100011010100100001000000000
+# clk_div_list[62] = 0b100010100110011000100000000
+# clk_div_list[63] = 0b100001111010000110000000000
 
-clk_div_list = array("I", [0 for _ in range(64)])
+#clk_freq_list_2 = clk_freq_list
+#clk_div_list_2 = clk_div_list
 
-clk_div_list[0] = -0b101100000100101000100000000000
-clk_div_list[1] = 0b1101001111101101011110000000000
-clk_div_list[2] = 0b1000110101001000111110100000000
-clk_div_list[3] = 0b110100111110110101111000000000
-clk_div_list[4] = 0b101010011000101011000100000000
-clk_div_list[5] = 0b100000100110101011000000000000
-clk_div_list[6] = 0b11100010000011100101100000000
-clk_div_list[7] = 0b11000111011101100001000000000
-clk_div_list[8] = 0b10110010011101110010000000000
-clk_div_list[9] = 0b10100001011101111111100000000
-clk_div_list[10] = 0b10001101010010001111100000000
-clk_div_list[11] = 0b10000010011010101100000000000
-clk_div_list[12] = 0b1111001000110011111100000000
-clk_div_list[13] = 0b1110001000001110010100000000
-clk_div_list[14] = 0b1101001111101101011100000000
-clk_div_list[15] = 0b1100000111000011001000000000
-clk_div_list[16] = 0b1011011101001001111000000000
-clk_div_list[17] = 0b1010110111100011101000000000
-clk_div_list[18] = 0b1010010101101000001000000000
-clk_div_list[19] = 0b1001110110110110101000000000
-clk_div_list[20] = 0b1001011010110100001100000000
-clk_div_list[21] = 0b1000110101001000010100000000
-clk_div_list[22] = 0b1000011110100001100100000000
-clk_div_list[23] = 0b1000001001101010001100000000
-clk_div_list[24] = 0b111110110010101101100000000
-clk_div_list[25] = 0b111100100011001100000000000
-clk_div_list[26] = 0b111001011110001001000000000
-clk_div_list[27] = 0b110111100101100011000000000
-clk_div_list[28] = 0b110101110100100111100000000
-clk_div_list[29] = 0b110100001010101000000000000
-clk_div_list[30] = 0b110010100110111110000000000
-clk_div_list[31] = 0b110000011100001010000000000
-clk_div_list[32] = 0b101111000110000010100000000
-clk_div_list[33] = 0b101101110100100101000000000
-clk_div_list[34] = 0b101100100111011010000000000
-clk_div_list[35] = 0b101011011110001100100000000
-clk_div_list[36] = 0b101010011000101001000000000
-clk_div_list[37] = 0b101000110110100110000000000
-clk_div_list[38] = 0b100111111001000101000000000
-clk_div_list[39] = 0b100110111110011000100000000
-clk_div_list[40] = 0b100110000110010101000000000
-clk_div_list[41] = 0b100101010000101111100000000
-clk_div_list[42] = 0b100100000100100111000000000
-clk_div_list[43] = 0b100011010100100001000000000
-clk_div_list[44] = 0b100010100110011000100000000
-clk_div_list[45] = 0b100001111010000110000000000
-clk_div_list[46] = 0b100001001111100011000000000
-clk_div_list[47] = 0b100000010010110000100000000
-clk_div_list[48] = 0b11111101100001000100000000
-clk_div_list[49] = 0b11111000110111010100000000
-clk_div_list[50] = 0b11110100011000011000000000
-clk_div_list[51] = 0b11110000000011100100000000
-clk_div_list[52] = 0b11101011111000011000000000
-clk_div_list[53] = 0b11100101111000100100000000
-clk_div_list[54] = 0b11100010000011011000000000
-clk_div_list[55] = 0b11011110010110001100000000
-clk_div_list[56] = 0b11011010110000101100000000
-clk_div_list[57] = 0b11010111010010011100000000
-clk_div_list[58] = 0b11010010010010000000000000
-clk_div_list[59] = 0b11001111000100100100000000
-clk_div_list[60] = 0b11001011111101010000000000
-clk_div_list[61] = 0b11001000111011111000000000
-clk_div_list[62] = 0b11000110000000001000000000
-clk_div_list[63] = 0b11000001110000100100000000
-
-
-clk_freq_list_2 = clk_freq_list
-clk_div_list_2 = clk_div_list
+clk_freq_list = config.clk_freq_list
+clk_div_list = config.clk_div_list
+clk_rpm_list = config.clk_rpm_list
 
 PIN_SPI_ONE_SCK=2
 PIN_SPI_ONE_MOSI=3
@@ -645,6 +655,7 @@ sm.active(1)
 last_poti = [0, 0, 0, 0, 0, 0, 0, 0]
 last_gpio = [1, 1, 1, 1]
 
+sm_active = True
 i = 0
 while True:
     # rpm, offset_igf, offset_cs, lambda1_freq, lambda1_duty, lambda2_freq, lambda2_duty
@@ -683,10 +694,17 @@ while True:
         
         if (actual_poti[0]//16 != last_poti[0]//16):
             #freq = frequencies[actual_poti[2]//16]    
-            print("=> "+str([actual_poti[0]//16, clk_freq_list[actual_poti[2]//16]]), end=" ")
+            #print("=> "+str([actual_poti[0]//16, clk_freq_list[actual_poti[0]//16]]), end=" ")
             #todo: register ueberschreiben fuer frequenz
             SM0_CLKDIV = 0x50200000 + 0x0c8
             mem32[SM0_CLKDIV] = clk_div_list[actual_poti[0]//16]
+            if (actual_poti[0]//16 == 0 and sm_active):
+                sm.active(0)
+                sm_active = False
+            if (actual_poti[0]//16 != 0 and not sm_active):
+                sm.active(1)
+                sm_active = True
+            print("=> "+str([sm_active, actual_poti[0]//16, clk_freq_list[actual_poti[0]//16], clk_rpm_list[actual_poti[0]//16]]), end=" ")
         
         if (actual_poti[1]//16 != last_poti[1]//16 or actual_poti[2]//16 != last_poti[2]//16 or actual_gpio != last_gpio):
             offset_n, offset_z = actual_poti[2]//16-32, actual_poti[1]//16-32
@@ -702,13 +720,14 @@ while True:
             #fill_mem_slot(offset_n, offset_z)
 
         if (actual_poti[3]//16 != last_poti[3]//16):
-            #freq = frequencies[actual_poti[2]//16]    
-            print("=> "+str(["freq_ox1", actual_poti[3]//16, clk_freq_list_2[actual_poti[3]//16]]), end=" ")
+            #freq = frequencies[actual_poti[2]//16]
+            #todo: bug clk_freq_list is wrong
+            print("=> "+str(["freq_ox1", actual_poti[3]//16, clk_freq_list[actual_poti[3]//16], clk_rpm_list[actual_poti[3]//16]]), end=" ")
             #todo: register ueberschreiben fuer frequenz
             SM1_CLKDIV = 0x50200000 + 0x0e0
             # page 399, rp2040-datasheet.pdf
             #0x0c8, 0x0e0, 0x0f8, 0x110
-            mem32[SM1_CLKDIV] = clk_div_list_2[actual_poti[3]//16]
+            mem32[SM1_CLKDIV] = clk_div_list[actual_poti[3]//16]
             
         if (actual_poti[6]//16 != last_poti[6]//16):
             duty_ox2 = (actual_poti[6]-2)*10 # [0-1023] -> [-2-1021]
@@ -719,12 +738,12 @@ while True:
             
         if (actual_poti[5]//16 != last_poti[5]//16):
             #freq = frequencies[actual_poti[2]//16]    
-            print("=> "+str(["freq_ox2", actual_poti[5]//16, clk_freq_list_2[actual_poti[5]//16]]), end=" ")
+            print("=> "+str(["freq_ox2", actual_poti[5]//16, clk_freq_list[actual_poti[5]//16]]), end=" ")
             #todo: register ueberschreiben fuer frequenz
             SM2_CLKDIV = 0x50200000 + 0x0f8
             # page 399, rp2040-datasheet.pdf
             #0x0c8, 0x0e0, 0x0f8, 0x110
-            mem32[SM2_CLKDIV] = clk_div_list_2[actual_poti[5]//16]
+            mem32[SM2_CLKDIV] = clk_div_list[actual_poti[5]//16]
             
         print("")
         
