@@ -96,37 +96,4 @@ for i in range(64):
     #print(clk_freq_list[i])
     print("clk_div_list["+str(i)+"] = "+clk_div_list[i])
     
-    
-clk_div_list_2 = []
-clk_freq_list_2 = []
-
-for i in range(64):
-    j = i+1
-    k = int((140*j)/64)
-    f = int((161_283*k)/140)
-    #sm = rp2.StateMachine(0, signal, freq=173_725, set_base=Pin(9))
-    sm = rp2.StateMachine(1, signal, freq=f, set_base=Pin(9))
-    b = bin(mem32[SM1_CLKDIV])
-    #print(bin(mem32[SM0_CLKDIV]))
-    print(j, end=": ")
-    print(k, end=" ")
-    print(f, end=" ")
-    print(b)
-    clk_div_list_2.append(b)
-    clk_freq_list_2.append(str(k) + " Hz")
-    
-print()
-print("clk_freq_list = [")
-for i in range(63):
-    print('    "'+clk_freq_list_2[i]+'",')
-print('    "'+clk_freq_list_2[63]+'"')
-print("]")
-
-
-print()
-print('clk_div_list = array("I", [0 for _ in range(64)])')
-print()
-for i in range(64):
-    #print(clk_freq_list[i])
-    print("clk_div_list_2["+str(i)+"] = "+clk_div_list_2[i])
-    
+ 
