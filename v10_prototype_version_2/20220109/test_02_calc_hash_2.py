@@ -1,0 +1,99 @@
+
+
+
+freq_list = [5,10,100]
+if len(freq_list)<3:
+    raise Exception("freq_list to short")
+if len(freq_list)>64:
+    raise Exception("freq_list to long")
+
+
+freq_list2 = [0]*64
+k = -1
+ad = 0
+for i in range(64):
+    #print(int((i*len(freq_list))/64))
+    j = int((i*len(freq_list))/64)
+    #print(i, k, j, freq_list[j])
+    if j == k:
+        nv = freq_list[min(j+1,len(freq_list)-1)]
+        di = nv-freq_list[j]
+        dr = di/(64/len(freq_list))
+        ad = ad+dr
+        #print(i, j, freq_list[j], "-", freq_list[min(j+1,len(freq_list)-1)], ad)
+        #print(i, j, freq_list[j]+ad)
+        freq_list2[i] = freq_list[j]+ad
+    else:
+        #print(i, j, freq_list[j], "*")
+        freq_list2[i] = freq_list[j]
+        ad = 0
+    k = j
+
+print(freq_list2)
+
+
+from machine import Pin, mem32
+import rp2
+from time import sleep
+
+@rp2.asm_pio(set_init=rp2.PIO.OUT_LOW)
+
+def signal():
+    wrap_target()
+    #out(x, 1)
+    #out(pins, 3)
+    #out(pins, 4) [8]
+    set(pins, 1) [7] 
+    set(pins, 0) [23] # 3 wartetakte (1+23 = 1+7+8+8)
+    set(x, 16) [7]
+    nop() [23] # 3 wartetakte
+    label('loop') 
+    nop() [31] # 4 wartetakte
+    nop() [23] # 3 wartetakte
+    jmp(x_dec, 'loop') [7]
+    wrap()
+
+#sm = rp2.StateMachine(0, signal, freq=3_000, out_base=Pin(6))
+#sm = rp2.StateMachine(0, signal, freq=173_725, set_base=Pin(9)) # 150.8
+
+# dreisatz 140/150.8*173_725
+sm = rp2.StateMachine(0, signal, freq=161_283, set_base=Pin(9)) # 140
+
+
+SM0_CLKDIV = 0x50200000 + 0x0c8
+
+
+clk_div_list = []
+clk_freq_list = []
+
+for i in range(64):
+    j = i+1
+    #k = int((140*j)/64)
+    k = freq_list2[i]
+    f = int((161_283*k)/140)
+    #sm = rp2.StateMachine(0, signal, freq=173_725, set_base=Pin(9))
+    sm = rp2.StateMachine(0, signal, freq=f, set_base=Pin(9))
+    b = bin(mem32[SM0_CLKDIV])
+    #print(bin(mem32[SM0_CLKDIV]))
+    print(j, end=": ")
+    print(k, end=" ")
+    print(f, end=" ")
+    print(b)
+    clk_div_list.append(b)
+    clk_freq_list.append(str(k) + " Hz")
+    
+print()
+print("clk_freq_list = [")
+for i in range(63):
+    print('    "'+clk_freq_list[i]+'",')
+print('    "'+clk_freq_list[63]+'"')
+print("]")
+
+
+print()
+print('clk_div_list = array("I", [0 for _ in range(64)])')
+print()
+for i in range(64):
+    #print(clk_freq_list[i])
+    print("clk_div_list["+str(i)+"] = "+clk_div_list[i])
+ 
