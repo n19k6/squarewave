@@ -1,0 +1,42 @@
+name: release
+
+on:
+  push
+
+jobs:
+  build_release:
+    name: build_release
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: build artifacts
+        run: |
+          mkdir release
+          cp v10_prototype_version_2/20220109/helper.py release/helper.py
+          cp v10_prototype_version_2/20220109/config.py release/config.py
+          cp v10_prototype_version_2/20220109/ecu_simulator_v1.py release/main.py
+          cp v10_prototype_version_2/20220109/test_02_calc_hash_2.py release/generate_config.py
+          zip release.zip release
+      - name: release
+        uses: actions/create-release@v1
+        id: create_release
+        with:
+          draft: false
+          prerelease: false
+          release_name: ${{ github.ref  }}
+          tag_name: ${{ github.ref }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - name: upload linux artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: a.zip
+          asset_name: a.zip
+          asset_content_type: application/zip
+      
