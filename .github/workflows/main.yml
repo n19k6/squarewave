@@ -30,6 +30,7 @@ jobs:
           draft: false
           prerelease: false
           release_name: release-${{ steps.date.outputs.date }}
+          tag_name: tag-${{ steps.date.outputs.date }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
       - name: upload linux artifact
