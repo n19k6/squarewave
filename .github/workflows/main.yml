@@ -17,12 +17,12 @@ jobs:
         run: echo "::set-output name=date::$(date +'%Y-%m-%d_%H-%M-%S')"
       - name: build artifacts
         run: |
-          mkdir release
-          cp v10_prototype_version_2/20220109/helper.py release/helper.py
-          cp v10_prototype_version_2/20220109/config.py release/config.py
-          cp v10_prototype_version_2/20220109/ecu_simulator_v1.py release/main.py
-          cp v10_prototype_version_2/20220109/test_02_calc_hash_2.py release/generate_config.py
-          zip release.zip release/*
+          mkdir release_${{ steps.date.outputs.date }}
+          cp v10_prototype_version_2/20220109/helper.py release_${{ steps.date.outputs.date }}/helper.py
+          cp v10_prototype_version_2/20220109/config.py release_${{ steps.date.outputs.date }}/config.py
+          cp v10_prototype_version_2/20220109/ecu_simulator_v1.py release_${{ steps.date.outputs.date }}/main.py
+          cp v10_prototype_version_2/20220109/test_02_calc_hash_2.py release_${{ steps.date.outputs.date }}/generate_config.py
+          zip release_${{ steps.date.outputs.date }}.zip release_${{ steps.date.outputs.date }}/*
       - name: release
         uses: actions/create-release@v1
         id: create_release
