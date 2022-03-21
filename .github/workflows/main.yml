@@ -22,7 +22,7 @@ jobs:
           cp v10_prototype_version_2/20220109/config.py release/config.py
           cp v10_prototype_version_2/20220109/ecu_simulator_v1.py release/main.py
           cp v10_prototype_version_2/20220109/test_02_calc_hash_2.py release/generate_config.py
-          zip release.zip release
+          zip release.zip release/*
       - name: release
         uses: actions/create-release@v1
         id: create_release
