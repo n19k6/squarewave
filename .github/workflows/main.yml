@@ -1,14 +1,40 @@
-on: push
-name: Build and release on push
+name: release
+
+on:
+  workflow_dispatch
+
 jobs:
-  release:
-    name: Release
+  build_release:
+    name: build_release
     runs-on: ubuntu-latest
     steps:
-      - name: Release
-        uses: fnkr/github-action-ghr@v1
-        if: startsWith(github.ref, 'refs/tags/')
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: version
+        run: echo "::set-output name=version::$(./bin/azblogfilter --version)"
+        id: version
+      - name: build artifacts
+        run: zip a.zip v10_prototype_version_2/20220109/helper.py
+      - name: release
+        uses: actions/create-release@v1
+        id: create_release
+        with:
+          draft: false
+          prerelease: false
+          release_name: ${{ steps.version.outputs.version }}
+          tag_name: ${{ github.ref }}
+          body_path: CHANGELOG.md
         env:
-          GHR_COMPRESS: xz
-          GHR_PATH: v10_prototype_version_2/20220109/config.py
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
+      - name: upload linux artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: a.zip
+          asset_name: a.zip
+          asset_content_type: application/zip
+      
