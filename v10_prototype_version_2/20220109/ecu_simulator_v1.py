@@ -227,6 +227,10 @@ mem_slot_2 = array("I", [0 for _ in range(36)])
 mem_slot_1_active = False
 
 def fill_mem_slot(n, z, p1=True, p2=True, p3=True, p4=True):
+    p1 = True
+    p2 = True
+    p3 = True
+    p4 = True
     global d0
     global ar_p
     global mem_slot_1_active
@@ -559,6 +563,7 @@ while True:
             #todo: register ueberschreiben fuer frequenz
             SM0_CLKDIV = 0x50200000 + 0x0c8
             mem32[SM0_CLKDIV] = clk_div_list[actual_poti[0]//16]
+            #mem32[SM0_CLKDIV] = clk_div_list[3]
             if (actual_poti[0]//16 == 0 and sm_active):
                 sm.active(0)
                 sm_active = False
@@ -629,3 +634,4 @@ while True:
     last_gpio = actual_gpio
     
     sleep(0.1)
+

@@ -88,3 +88,4 @@ if __name__ == "__main__":
     assert suppress(signal_d, True, True, False, True) == "10111000011001"
     assert suppress(signal_d, True, True, True, False) == "10111001000001"
     assert suppress(signal_d, False, True, False, True) == "00111000011000"
+    

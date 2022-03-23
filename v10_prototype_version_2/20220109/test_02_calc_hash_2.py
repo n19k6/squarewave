@@ -1,6 +1,3 @@
-
-
-
 #freq_list = [5,10,100]
 freq_list = [2.5,2.5,4.166,5,5,6.666,7.5,8.333,9.166,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,68,70,72,74,76,78,80,82,84,86,88,90,92,94,96,98,100]
 if len(freq_list)<3:
@@ -31,7 +28,7 @@ for i in range(64):
         ad = ad+dr
         #print(i, j, freq_list[j], "-", freq_list[min(j+1,len(freq_list)-1)], ad)
         #print(i, j, freq_list[j]+ad)
-        print("*")
+        #print("*")
         freq_list2[i] = freq_list[j]+ad
     else:
         #print(i, j, freq_list[j], "*")
@@ -39,6 +36,8 @@ for i in range(64):
         ad = 0
     k = j
 
+print("hallo")
+print(len(freq_list))
 print(freq_list2)
 
 pwm_list2 = [0]*64
@@ -170,7 +169,7 @@ print('clk_div_list = array("I", [0 for _ in range(64)])')
 print()
 for i in range(64):
     #print(clk_freq_list[i])
-    print("clk_div_list["+str(i)+"] = "+pwm_div_list[i])
+    print("clk_div_list["+str(i)+"] = "+clk_div_list[i])
 
 print()
 print("pwm_freq_list = [")
@@ -185,3 +184,4 @@ print()
 for i in range(64):
     #print(clk_freq_list[i])
     print("pwm_div_list["+str(i)+"] = "+pwm_div_list[i]) 
+
