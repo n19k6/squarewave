@@ -1,0 +1,45 @@
+name: release
+
+on:
+  push
+
+jobs:
+  build_release:
+    name: build_release
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: get_timestamp
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d_%H-%M-%S')"
+      - name: build artifacts
+        run: |
+          mkdir release_${{ steps.date.outputs.date }}
+          cp v10_prototype_version_2/20220109/helper.py release_${{ steps.date.outputs.date }}/helper.py
+          cp v10_prototype_version_2/20220109/config.py release_${{ steps.date.outputs.date }}/config.py
+          cp v10_prototype_version_2/20220109/ecu_simulator_v1.py release_${{ steps.date.outputs.date }}/main.py
+          cp v10_prototype_version_2/20220109/test_02_calc_hash_2.py release_${{ steps.date.outputs.date }}/generate_config.py
+          zip release_${{ steps.date.outputs.date }}.zip release_${{ steps.date.outputs.date }}/*
+      - name: release
+        uses: actions/create-release@v1
+        id: create_release
+        with:
+          draft: false
+          prerelease: false
+          release_name: release-${{ steps.date.outputs.date }}
+          tag_name: tag-${{ steps.date.outputs.date }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - name: upload linux artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: release_${{ steps.date.outputs.date }}.zip
+          asset_name: release_${{ steps.date.outputs.date }}.zip
+          asset_content_type: application/zip
+      
