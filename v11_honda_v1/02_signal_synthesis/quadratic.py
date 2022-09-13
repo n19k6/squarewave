@@ -37,6 +37,7 @@ import numpy as np
 
 x = [e/100 for e in range(0,36000, 375)]
 x2 = [e/1000 for e in range(0,360000, 375)]
+
 y = [0,0,0,1,0,-1,0,0]*9+[0,0,0,0,0,0,0,0]*3
 fp = [[0,0],[0,0],[0,0],[1,0],[0,0],[-1,0],[0,0],[0,0]]*9+[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]*3
 gp = [[0,0],[0,0],[0,0.02],[1,0],[0,-0.6],[-1,0],[0,0.02],[0,0]]*9+[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]*3
@@ -53,5 +54,19 @@ h = BPoly.from_derivatives(x, hp)
 #plt.plot(x, y, 'o', y2)
 #plt.legend(['data', 'linear', 'cubic'], loc='best')
 plt.plot(x, y, 'bo', x, [f(e) for e in x], 'g--', x2, [g(e) for e in x2], 'r', x2, [h(e) for e in x2], 'b')
+
+#def f2b(f):
+#    f = max(-1, f)
+#    f = min(1, f)
+#    f=f+1
+#    f=int(f*127)
+#    f = max(0, f)
+#    f = min(255, f)
+#    return(f)
+
+#for i in range(len(x2)):
+#    print(i, x2[i], h(i), f2b(h(i)), "0"*(8-f2b(h(i)).bit_length())+bin(f2b(h(i))).replace("0b",""))
+
 plt.axis([0,360, -1.25, 1.25])
 plt.show()
+
