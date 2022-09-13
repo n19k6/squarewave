@@ -1,0 +1,49 @@
+<svg version="1.1" width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+<!--<svg version="1.1" width="800" height="600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600"> -->
+<!-- https://math.hws.edu/eck/cs424/notes2013/canvas/bezier.html -->
+<!-- https://blogs.sitepointstatic.com/examples/tech/svg-curves/cubic-curve.html -->
+<g transform="scale(0.5,1)">
+  <polyline points="0,300 100,0 300,600 400,300" style="fill:none;stroke:grey"/>
+  <polyline points="25,300 100,0 300,600 375,300 375,300 450,0 650,600 725,300" style="fill:none;stroke:red"/>
+  <path d="M0,300 C50,300 50,0 100,0" style="fill:none;stroke:green"/>
+  <path d="M100,0 C150,0 250,600 300,600" style="fill:none;stroke:green"/>
+  <path d="M300,600 C350,600 350,300 400,300" style="fill:none;stroke:green"/>
+  <path d="M400,300 C400,300 500,300 500,300" style="fill:none;stroke:green"/>
+  <path d="M0,300 C70,300 30,0 100,0" style="fill:none;stroke:blue"/>
+  <path d="M100,0 C170,0 230,600 300,600" style="fill:none;stroke:blue"/>
+  <path d="M300,600 C370,600 330,300 400,300" style="fill:none;stroke:blue"/>
+  <path d="M400,300 C400,300 500,300 500,300" style="fill:none;stroke:blue"/>
+  <path d="M500,300 C570,300 530,0 600,0" style="fill:none;stroke:blue"/>
+  <path d="M600,0 C670,0 730,600 800,600" style="fill:none;stroke:blue"/>
+  <path d="M800,600 C870,600 830,300 900,300" style="fill:none;stroke:blue"/>
+  <path d="M900,300 C900,300 1000,300 1000,300" style="fill:none;stroke:blue"/>
+</g>
+</svg>
+<!--
+https://jupyter.org/try-jupyter/lab/
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+x = np.linspace(0, 2, 400)
+#line1, = plt.plot(x, np.sin(x*10), label='sin')
+#line2, = plt.plot(x, np.cos(x), label='cos')
+line1, = plt.plot(x, np.power(x, 2), label='x^2')
+line1, = plt.plot(x, np.sin(x+np.pi), label='sin')
+plt.legend(handles=[line1, line2], loc='best')
+plt.grid(visible=True, color='aqua', alpha=0.6, linestyle='dashdot')
+plt.show()
+
+import numpy as np
+import matplotlib.pyplot as plt
+x = np.linspace(0, np.pi*2, 800)
+#line1, = plt.plot(x, np.sin(x*10), label='sin')
+#line2, = plt.plot(x, np.cos(x), label='cos')
+line1, = plt.plot(x, np.sin(x*24)*0.5*(1+np.sign(2*np.pi/24*18-x)), label='sin')
+line2, = plt.plot(x, 0.5*(1+np.sign(2*np.pi/24*18-x)), label='sign')
+#line2, = plt.plot(x, np.sin(x+np.pi), label='sin')
+plt.legend(handles=[line1], loc='best')
+plt.grid(visible=True, color='aqua', alpha=0.6, linestyle='dashdot')
+plt.show()
+
+-->

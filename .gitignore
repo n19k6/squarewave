@@ -1,4 +1,5 @@
 *~
+.~lock*
 *.pyc
 __pycache__/
 venv/
