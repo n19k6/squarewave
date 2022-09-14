@@ -64,6 +64,8 @@ plt.plot(x, y, 'bo', x, [f(e) for e in x], 'g--', x2, [g(e) for e in x2], 'r', x
 #    f = min(255, f)
 #    return(f)
 
+print("samples: ",range(len(x2)))
+
 #for i in range(len(x2)):
 #    print(i, x2[i], h(i), f2b(h(i)), "0"*(8-f2b(h(i)).bit_length())+bin(f2b(h(i))).replace("0b",""))
 
