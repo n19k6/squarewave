@@ -6,8 +6,7 @@ Dual 10bit DAC w/SPI     | MCP4812-E/P   | Microchip | [579-MCP4812-E/P](https:/
 Dual 8bit DAC w/SPI     | MCP4802-E/P   | Microchip | [579-MCP4802-E/P](https://www.mouser.de/ProductDetail/Microchip-Technology-Atmel/MCP4802-E-P?qs=bxUt0k7cytI0U0E3kiOWig%3D%3D)  | -| -
 MCP4725 Breakout     | MCP4725 | Adafruit | [485-935](https://www.mouser.de/ProductDetail/Adafruit/935?qs=GURawfaeGuDLSBaw80Z3Sg%3D%3D)  | [MCP4725 Breakout](https://www.adafruit.com/product/935)| [Datasheet](https://cdn-shop.adafruit.com/datasheets/mcp4725.pdf)
 
-R2R ladder     | PmodR2R   | Digilent | 485-239  | []() | []()
-R2R ladder     | PmodR2R   | Digilent | 485-239  | []() | []()
+
 
 Possible next steps:
 - use R2R ladder and generate sine-wave using DMA on pico
